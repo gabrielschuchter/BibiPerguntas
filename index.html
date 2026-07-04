@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Batalha de Perguntas — Jogo entre Amigos</title>
+  <meta name="description" content="Jogo local de perguntas e respostas por equipes, com timer, ajudas, pontuação e perguntas embaralhadas." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="aurora"></div>
+  <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">?</span>
+        <div>
+          <strong>Batalha de Perguntas</strong>
+          <small>Jogo local entre amigos</small>
+        </div>
+      </div>
+      <nav class="top-actions" aria-label="Ações principais">
+        <button class="ghost-btn" id="rulesBtn" type="button">Regras</button>
+        <button class="ghost-btn" id="resetBtn" type="button">Reiniciar</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="view active" id="setupView" aria-labelledby="setupTitle">
+        <div class="hero-card">
+          <div>
+            <p class="eyebrow">Configuração</p>
+            <h1 id="setupTitle">Cadastre as equipes e comece a rodada.</h1>
+            <p class="hero-text">Cada equipe recebe cor, quantidade de integrantes e nomes dos participantes. O sistema controla a ordem, sorteia perguntas, alterna os jogadores e computa os pontos.</p>
+          </div>
+          <div class="mini-rules">
+            <span>🏆 Vitória: 50 acertos</span>
+            <span>⏱️ Tempo padrão: 60 s</span>
+            <span>🛟 1 ajuda por pergunta</span>
+          </div>
+        </div>
+
+        <form class="setup-grid" id="setupForm">
+          <section class="panel settings-panel">
+            <h2>Parâmetros do jogo</h2>
+            <div class="field-grid compact">
+              <label>
+                Pontos para vencer
+                <input id="targetScore" type="number" min="1" value="50" />
+              </label>
+              <label>
+                Tempo por pergunta (s)
+                <input id="baseTime" type="number" min="15" value="60" />
+              </label>
+              <label>
+                Consultas à equipe
+                <input id="teamHelpCount" type="number" min="0" value="3" />
+              </label>
+              <label>
+                Pesquisas no Google
+                <input id="googleHelpCount" type="number" min="0" value="3" />
+              </label>
+              <label>
+                Bônus de +1 min
+                <input id="timeHelpCount" type="number" min="0" value="3" />
+              </label>
+              <label>
+                Quantidade inicial de equipes
+                <input id="initialTeamCount" type="number" min="2" value="3" />
+              </label>
+            </div>
+            <div class="button-row">
+              <button class="secondary-btn" id="buildTeamsBtn" type="button">Montar equipes</button>
+              <button class="secondary-btn" id="loadExampleBtn" type="button">Usar exemplo</button>
+            </div>
+          </section>
+
+          <section class="panel teams-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Equipes e integrantes</h2>
+                <p>Defina a capacidade e preencha exatamente essa quantidade de nomes.</p>
+              </div>
+              <button class="secondary-btn" id="addTeamBtn" type="button">+ Equipe</button>
+            </div>
+            <div id="teamsBuilder" class="teams-builder"></div>
+          </section>
+
+          <div class="start-card">
+            <div>
+              <strong id="questionCountText">3.200 perguntas carregadas</strong>
+              <span>Áreas: conhecimentos gerais, raciocínio, ciências, nutrição, odontologia, enfermagem e tecnologia.</span>
+            </div>
+            <button class="primary-btn" type="submit">Começar jogo</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="view" id="gameView" aria-labelledby="gameTitle">
+        <div class="game-layout">
+          <aside class="score-panel panel">
+            <div class="score-header">
+              <div>
+                <p class="eyebrow">Placar</p>
+                <h2>Equipes</h2>
+              </div>
+              <button class="secondary-btn small" id="pauseBtn" type="button">Pausar</button>
+            </div>
+            <div id="scoreboard" class="scoreboard"></div>
+          </aside>
+
+          <section class="question-panel panel" id="questionPanel">
+            <div class="turn-strip" id="turnStrip"></div>
+            <div class="question-meta">
+              <span id="areaBadge" class="badge">Área</span>
+              <span id="difficultyBadge" class="badge subtle">Dificuldade</span>
+              <span id="questionId" class="badge subtle">Q0000</span>
+            </div>
+            <h1 id="gameTitle" class="question-title">Pergunta</h1>
+            <div id="answers" class="answers" role="list"></div>
+
+            <div class="feedback" id="feedback" aria-live="polite"></div>
+
+            <div class="help-bar" aria-label="Ajudas disponíveis">
+              <button class="help-btn" id="teamHelpBtn" type="button">👥 Consultar equipe <span></span></button>
+              <button class="help-btn" id="googleHelpBtn" type="button">🔎 Pesquisar no Google <span></span></button>
+              <button class="help-btn" id="timeHelpBtn" type="button">⏱️ +1 min <span></span></button>
+            </div>
+
+            <div class="question-footer">
+              <div class="timer-wrap" aria-label="Timer da pergunta">
+                <svg class="timer-svg" viewBox="0 0 120 120" role="img" aria-label="Tempo restante">
+                  <circle class="timer-bg" cx="60" cy="60" r="52"></circle>
+                  <circle class="timer-progress" id="timerProgress" cx="60" cy="60" r="52"></circle>
+                </svg>
+                <div class="timer-center">
+                  <strong id="timerText">60</strong>
+                  <span>seg</span>
+                </div>
+              </div>
+              <div class="next-actions">
+                <button class="secondary-btn" id="skipBtn" type="button">Pular/errar</button>
+                <button class="primary-btn" id="nextBtn" type="button" disabled>Próxima rodada</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="winnerView" aria-labelledby="winnerTitle">
+        <div class="winner-card panel">
+          <p class="eyebrow">Fim de jogo</p>
+          <h1 id="winnerTitle">Equipe vencedora</h1>
+          <p id="winnerText"></p>
+          <div id="finalScoreboard" class="scoreboard final"></div>
+          <div class="button-row center">
+            <button class="primary-btn" id="playAgainBtn" type="button">Jogar novamente</button>
+            <button class="secondary-btn" id="newSetupBtn" type="button">Nova configuração</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="rulesDialog" class="rules-dialog">
+    <div class="dialog-head">
+      <h2>Regras do jogo</h2>
+      <button class="icon-btn" id="closeRulesBtn" type="button" aria-label="Fechar regras">×</button>
+    </div>
+    <div class="rules-content">
+      <h3>1. Cadastro</h3>
+      <p>Cadastre quantas equipes quiser. Em cada equipe, defina o nome, a cor e a quantidade de integrantes. Depois, preencha exatamente essa quantidade de nomes.</p>
+      <h3>2. Rodadas</h3>
+      <p>O sistema chama automaticamente um jogador por vez. A ordem alterna entre as equipes. Dentro de cada equipe, os integrantes também vão sendo chamados em ciclo.</p>
+      <h3>3. Perguntas</h3>
+      <p>As perguntas são de múltipla escolha. A área e o nível de dificuldade aparecem antes da resposta. As alternativas são embaralhadas a cada rodada para evitar padrão.</p>
+      <h3>4. Tempo</h3>
+      <p>Cada participante tem 60 segundos por pergunta, ou o tempo definido na configuração. Quando o tempo acaba, a pergunta é considerada errada.</p>
+      <h3>5. Ajudas</h3>
+      <p>Cada equipe possui uma quantidade limitada de ajudas: consultar a equipe, pesquisar no Google ou ganhar mais 1 minuto. Em cada pergunta, o jogador só pode usar uma ajuda.</p>
+      <h3>6. Pontuação</h3>
+      <p>Cada acerto vale 1 ponto para a equipe do jogador que respondeu. Erros e perguntas puladas não somam ponto.</p>
+      <h3>7. Vitória</h3>
+      <p>Vence a primeira equipe que atingir 50 acertos, ou a pontuação de vitória definida antes de começar o jogo.</p>
+      <h3>8. Clima do jogo</h3>
+      <p>As perguntas misturam conhecimentos gerais e temas técnicos leves de nutrição, odontologia, enfermagem e tecnologia. A ideia é criar momentos divertidos quando alguém cai em uma área fora da sua zona de conforto.</p>
+    </div>
+  </dialog>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
