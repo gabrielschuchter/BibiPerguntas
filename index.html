@@ -21,6 +21,7 @@
       </div>
       <nav class="top-actions" aria-label="Ações principais">
         <button class="ghost-btn" id="rulesBtn" type="button">Regras</button>
+        <button class="ghost-btn" id="clearCacheBtn" type="button">Limpar cache</button>
         <button class="ghost-btn" id="resetBtn" type="button">Reiniciar</button>
       </nav>
     </header>
@@ -90,8 +91,9 @@
             <div>
               <strong id="questionCountText">500 perguntas carregadas</strong>
               <span>15 áreas equilibradas, com conhecimentos gerais, cultura pop, Brasil, esportes e temas técnicos leves.</span>
+              <small class="question-load-status" id="questionLoadStatus" aria-live="polite">Ao começar, o jogo tenta buscar perguntas online em português e usa fallback local se necessário.</small>
             </div>
-            <button class="primary-btn" type="submit">Começar jogo</button>
+            <button class="primary-btn" id="startGameBtn" type="submit">Começar jogo</button>
           </div>
         </form>
       </section>

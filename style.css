@@ -180,8 +180,11 @@ button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
   font-weight: 850;
 }
 .start-card { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 22px; }
-.start-card strong, .start-card span { display: block; }
+.start-card strong, .start-card span, .start-card small { display: block; }
 .start-card span { margin-top: 3px; color: var(--muted); }
+.question-load-status { margin-top: 8px; color: #d9e4f5; line-height: 1.45; }
+.question-load-status.warning { color: #ffe08a; }
+.question-load-status.success { color: #bdf9d3; }
 
 .game-layout { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 18px; align-items: start; }
 .score-header { display: flex; justify-content: space-between; align-items: start; gap: 10px; }

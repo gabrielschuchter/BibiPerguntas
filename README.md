@@ -36,11 +36,14 @@ O projeto funciona como site estático.
 - `questions.json`: base editável em JSON puro.
 - `questions.js`: mesma base em JavaScript para funcionar abrindo `index.html` direto.
 - `generate_questions.py`: gera a base original equilibrada.
-- `validate_questions.py`: valida qualidade, distribuição e sincronização da base.
+- `scripts/validate-questions.js`: valida qualidade, distribuição e sincronização da base local.
+- `data/question-sources.md`: notas sobre Tryvia, OpenTDB e filtros de qualidade.
 
 ## Banco de perguntas
 
-A base atual tem **500 perguntas originais em português brasileiro**. O estilo é inspirado em jogos clássicos de perguntas de auditório, sem copiar literalmente perguntas proprietárias de programas, sites ou bancos fechados.
+O jogo tenta carregar perguntas online da Tryvia API, uma API aberta de trivia em português compatível com Open Trivia Database. Se a Tryvia falhar, o app pode tentar OpenTDB como fonte secundária, mas rejeita perguntas em inglês quando não há normalização segura. Se as APIs falharem ou não houver internet, o jogo usa automaticamente o banco local.
+
+O banco local tem **500 perguntas originais em português brasileiro**. Ele serve como fallback offline e complementa o jogo com perguntas técnicas leves de Nutrição, Odontologia, Enfermagem e Tecnologia. O projeto não copia bancos proprietários de programas de TV.
 
 Categorias:
 
@@ -74,6 +77,7 @@ Cada pergunta deve seguir este formato:
 ```json
 {
   "id": "Q0001",
+  "source": "local",
   "area": "Geografia",
   "difficulty": "Fácil",
   "question": "Qual país tem o formato parecido com uma bota?",
@@ -86,6 +90,7 @@ Cada pergunta deve seguir este formato:
 Regras importantes:
 
 - `id` único e sequencial.
+- `source` deve ser `local` no banco embarcado.
 - `area` deve ser uma das 15 categorias.
 - `difficulty` deve ser `Fácil`, `Média` ou `Avançada`.
 - `options` deve ter exatamente 4 alternativas.
@@ -102,10 +107,25 @@ python generate_questions.py
 Para validar a base:
 
 ```bash
-python validate_questions.py
+node scripts/validate-questions.js
 ```
 
-Se o Python não estiver no PATH, use qualquer Python 3 local. Os scripts não exigem dependências externas.
+O validador não exige dependências externas. Ele checa campos obrigatórios, sincronização entre `questions.json` e `questions.js`, duplicatas, alternativas, prefixos proibidos, inglês provável e matemática acima de 5%.
+
+## Fontes online e cache
+
+Fluxo ao iniciar uma partida:
+
+1. Carregar o banco local.
+2. Pedir token da Tryvia.
+3. Buscar perguntas `type=multiple`.
+4. Normalizar, decodificar HTML entities, validar e filtrar perguntas ruins.
+5. Se necessário, tentar OpenTDB com os mesmos filtros.
+6. Misturar perguntas externas com perguntas locais técnicas leves.
+7. Salvar perguntas externas válidas em `localStorage`.
+8. Se a API falhar, usar cache; se o cache também falhar, usar banco local.
+
+Existe um botão **Limpar cache** no topo da interface para forçar uma nova busca online na próxima partida.
 
 ## Sorteio das perguntas
 

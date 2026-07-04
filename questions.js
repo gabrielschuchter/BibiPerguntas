@@ -1,6 +1,7 @@
 window.QUESTION_BANK = [
   {
     "id": "Q0001",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital da Itália?",
@@ -15,6 +16,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0002",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital da França?",
@@ -29,6 +31,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0003",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital do Japão?",
@@ -43,6 +46,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0004",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital do Egito?",
@@ -57,6 +61,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0005",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital do Canadá?",
@@ -71,6 +76,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0006",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital do México?",
@@ -85,6 +91,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0007",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital da Argentina?",
@@ -99,6 +106,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0008",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital do Chile?",
@@ -113,6 +121,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0009",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital do Uruguai?",
@@ -127,6 +136,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0010",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital do Peru?",
@@ -141,6 +151,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0011",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital da Colômbia?",
@@ -155,6 +166,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0012",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital de Portugal?",
@@ -169,6 +181,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0013",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital da Espanha?",
@@ -183,6 +196,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0014",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital da Alemanha?",
@@ -197,6 +211,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0015",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Fácil",
     "question": "Qual é a capital do Reino Unido?",
@@ -211,6 +226,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0016",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital da Grécia?",
@@ -225,6 +241,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0017",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital da Turquia?",
@@ -239,6 +256,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0018",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital da Rússia?",
@@ -253,6 +271,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0019",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital da China?",
@@ -267,6 +286,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0020",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital da Coreia do Sul?",
@@ -281,6 +301,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0021",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital da Índia?",
@@ -295,6 +316,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0022",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital da Tailândia?",
@@ -309,6 +331,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0023",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital da Austrália?",
@@ -323,6 +346,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0024",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital da Nova Zelândia?",
@@ -337,6 +361,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0025",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital da África do Sul?",
@@ -351,6 +376,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0026",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital do Marrocos?",
@@ -365,6 +391,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0027",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital do Quênia?",
@@ -379,6 +406,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0028",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital dos Estados Unidos?",
@@ -393,6 +421,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0029",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Média",
     "question": "Qual é a capital de Cuba?",
@@ -407,6 +436,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0030",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Avançada",
     "question": "Qual é a capital da Noruega?",
@@ -421,6 +451,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0031",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Avançada",
     "question": "Qual é a capital da Suécia?",
@@ -435,6 +466,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0032",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Avançada",
     "question": "Qual é a capital da Dinamarca?",
@@ -449,6 +481,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0033",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Avançada",
     "question": "Qual é a capital da Islândia?",
@@ -463,6 +496,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0034",
+    "source": "local",
     "area": "Geografia",
     "difficulty": "Avançada",
     "question": "Qual é a capital da Irlanda?",
@@ -477,6 +511,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0035",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Quem foi conhecido como o primeiro imperador de Roma?",
@@ -491,6 +526,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0036",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Qual civilização construiu Machu Picchu?",
@@ -505,6 +541,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0037",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Qual povo antigo construiu as pirâmides de Gizé?",
@@ -519,6 +556,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0038",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Quem liderou a independência da Índia por meio da resistência pacífica?",
@@ -533,6 +571,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0039",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Quem foi a rainha do Egito associada a Júlio César e Marco Antônio?",
@@ -547,6 +586,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0040",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Qual cidade italiana foi soterrada pela erupção do Vesúvio?",
@@ -561,6 +601,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0041",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Em que país ocorreu a Revolução Francesa?",
@@ -575,6 +616,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0042",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Qual muro dividiu uma cidade alemã durante a Guerra Fria?",
@@ -589,6 +631,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0043",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Qual guerra ficou marcada pelo uso de trincheiras na Europa?",
@@ -603,6 +646,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0044",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Quem foi o líder britânico durante boa parte da Segunda Guerra Mundial?",
@@ -617,6 +661,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0045",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Qual império tinha Constantinopla como capital?",
@@ -631,6 +676,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0046",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Qual navegador português contornou o Cabo da Boa Esperança?",
@@ -645,6 +691,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0047",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Quem comandou a primeira viagem que deu a volta ao mundo?",
@@ -659,6 +706,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0048",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Qual documento inglês de 1215 limitou o poder do rei?",
@@ -673,6 +721,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0049",
+    "source": "local",
     "area": "História",
     "difficulty": "Fácil",
     "question": "Quem foi o imperador francês derrotado em Waterloo?",
@@ -687,6 +736,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0050",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual cidade japonesa foi atingida por uma bomba atômica em 1945 antes de Nagasaki?",
@@ -701,6 +751,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0051",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual movimento europeu valorizou razão, ciência e crítica ao absolutismo?",
@@ -715,6 +766,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0052",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual período veio depois da Idade Média na Europa?",
@@ -729,6 +781,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0053",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual povo antigo é associado aos jogos olímpicos originais?",
@@ -743,6 +796,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0054",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Quem foi o primeiro presidente dos Estados Unidos?",
@@ -757,6 +811,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0055",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual tratado encerrou oficialmente a Primeira Guerra Mundial?",
@@ -771,6 +826,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0056",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual civilização criou uma escrita chamada cuneiforme?",
@@ -785,6 +841,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0057",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual cidade era o centro da democracia ateniense?",
@@ -799,6 +856,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0058",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual rainha inglesa dá nome à Era Vitoriana?",
@@ -813,6 +871,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0059",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual movimento cultural europeu marcou os séculos XIV a XVI?",
@@ -827,6 +886,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0060",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Quem pintou a Mona Lisa?",
@@ -841,6 +901,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0061",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual navegação portuguesa chegou ao Brasil em 1500?",
@@ -855,6 +916,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0062",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual princesa assinou a Lei Áurea?",
@@ -869,6 +931,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0063",
+    "source": "local",
     "area": "História",
     "difficulty": "Média",
     "question": "Qual revolta mineira teve Tiradentes como figura mais lembrada?",
@@ -883,6 +946,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0064",
+    "source": "local",
     "area": "História",
     "difficulty": "Avançada",
     "question": "Qual era o nome do primeiro imperador do Brasil?",
@@ -897,6 +961,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0065",
+    "source": "local",
     "area": "História",
     "difficulty": "Avançada",
     "question": "Qual cidade foi capital do Brasil antes de Brasília?",
@@ -911,6 +976,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0066",
+    "source": "local",
     "area": "História",
     "difficulty": "Avançada",
     "question": "Qual conflito brasileiro envolveu Brasil, Argentina e Uruguai contra o Paraguai?",
@@ -925,6 +991,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0067",
+    "source": "local",
     "area": "História",
     "difficulty": "Avançada",
     "question": "Qual movimento de 1930 levou Getúlio Vargas ao poder?",
@@ -939,6 +1006,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0068",
+    "source": "local",
     "area": "História",
     "difficulty": "Avançada",
     "question": "Qual país foi invadido em 1939, iniciando a Segunda Guerra Mundial?",
@@ -953,6 +1021,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0069",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual é o maior planeta do Sistema Solar?",
@@ -967,6 +1036,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0070",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual planeta é conhecido como planeta vermelho?",
@@ -981,6 +1051,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0071",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual gás é essencial para a respiração humana?",
@@ -995,6 +1066,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0072",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual órgão bombeia o sangue pelo corpo?",
@@ -1009,6 +1081,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0073",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual é a substância natural mais dura encontrada na Terra?",
@@ -1023,6 +1096,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0074",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual é a fórmula química da água?",
@@ -1037,6 +1111,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0075",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual estrela fica no centro do Sistema Solar?",
@@ -1051,6 +1126,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0076",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual sentido humano usa a retina?",
@@ -1065,6 +1141,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0077",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual parte da planta realiza fotossíntese com mais frequência?",
@@ -1079,6 +1156,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0078",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual metal líquido é conhecido pelo símbolo Hg?",
@@ -1093,6 +1171,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0079",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual unidade mede a intensidade de corrente elétrica?",
@@ -1107,6 +1186,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0080",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual força mantém os planetas em órbita ao redor do Sol?",
@@ -1121,6 +1201,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0081",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual é o nome do processo em que a água vira vapor?",
@@ -1135,6 +1216,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0082",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual é o nome do processo em que o vapor vira líquido?",
@@ -1149,6 +1231,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0083",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Fácil",
     "question": "Qual tecido do corpo humano conduz impulsos nervosos?",
@@ -1163,6 +1246,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0084",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual vitamina é produzida na pele com ajuda da luz solar?",
@@ -1177,6 +1261,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0085",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual instrumento mede temperatura?",
@@ -1191,6 +1276,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0086",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual instrumento é usado para observar objetos muito pequenos?",
@@ -1205,6 +1291,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0087",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual instrumento é usado para observar astros distantes?",
@@ -1219,6 +1306,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0088",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual camada de gás envolve a Terra?",
@@ -1233,6 +1321,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0089",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual tipo sanguíneo é conhecido como doador universal de hemácias?",
@@ -1247,6 +1336,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0090",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual órgão filtra o sangue e produz urina?",
@@ -1261,6 +1351,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0091",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual osso protege o cérebro?",
@@ -1275,6 +1366,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0092",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual músculo é associado à respiração?",
@@ -1289,6 +1381,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0093",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual é a unidade básica dos seres vivos?",
@@ -1303,6 +1396,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0094",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual molécula carrega a informação genética?",
@@ -1317,6 +1411,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0095",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual partícula tem carga negativa?",
@@ -1331,6 +1426,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0096",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual escala é usada para medir acidez?",
@@ -1345,6 +1441,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0097",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Média",
     "question": "Qual fenômeno causa o som do trovão?",
@@ -1359,6 +1456,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0098",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Avançada",
     "question": "Qual planeta possui anéis muito visíveis?",
@@ -1373,6 +1471,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0099",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Avançada",
     "question": "Qual camada da Terra fica no centro do planeta?",
@@ -1387,6 +1486,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0100",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Avançada",
     "question": "Qual mudança de estado transforma sólido em líquido?",
@@ -1401,6 +1501,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0101",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Avançada",
     "question": "Qual mudança de estado transforma líquido em sólido?",
@@ -1415,6 +1516,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0102",
+    "source": "local",
     "area": "Ciências",
     "difficulty": "Avançada",
     "question": "Qual tipo de energia está associada ao movimento?",
@@ -1429,6 +1531,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0103",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual é o único alimento conhecido por praticamente não estragar?",
@@ -1443,6 +1546,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0104",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual objeto é usado para indicar os pontos cardeais?",
@@ -1457,6 +1561,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0105",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual é o nome do prêmio entregue pela Academia de Cinema dos Estados Unidos?",
@@ -1471,6 +1576,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0106",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual bebida é tradicionalmente feita com folhas da erva-mate?",
@@ -1485,6 +1591,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0107",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual fruta é conhecida por ter sementes do lado de fora?",
@@ -1499,6 +1606,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0108",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual peça de roupa é usada no pescoço em ocasiões formais?",
@@ -1513,6 +1621,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0109",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual objeto mede o tempo em uma parede ou pulso?",
@@ -1527,6 +1636,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0110",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual brinquedo clássico sobe com o vento preso por uma linha?",
@@ -1541,6 +1651,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0111",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual material é produzido pelas abelhas?",
@@ -1555,6 +1666,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0112",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual é o idioma mais falado no Brasil?",
@@ -1569,6 +1681,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0113",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual sinal de trânsito manda parar?",
@@ -1583,6 +1696,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0114",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual alimento é base tradicional do sushi?",
@@ -1597,6 +1711,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0115",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual instrumento corta papel com duas lâminas?",
@@ -1611,6 +1726,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0116",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual objeto abre fechaduras comuns?",
@@ -1625,6 +1741,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0117",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Fácil",
     "question": "Qual é o nome da refeição feita ao acordar?",
@@ -1639,6 +1756,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0118",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual cor resulta da mistura de azul com amarelo?",
@@ -1653,6 +1771,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0119",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual mês tem o Dia das Crianças no Brasil?",
@@ -1667,6 +1786,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0120",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual documento identifica oficialmente uma pessoa no Brasil?",
@@ -1681,6 +1801,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0121",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual objeto é usado para proteger da chuva?",
@@ -1695,6 +1816,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0122",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual lugar guarda livros para consulta pública?",
@@ -1709,6 +1831,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0123",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual profissão pilota aviões?",
@@ -1723,6 +1846,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0124",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual profissional prepara pães em uma padaria?",
@@ -1737,6 +1861,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0125",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual ferramenta é usada para apertar parafusos?",
@@ -1751,6 +1876,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0126",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual objeto amplia letras pequenas?",
@@ -1765,6 +1891,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0127",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual transporte anda sobre trilhos?",
@@ -1779,6 +1906,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0128",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual objeto guarda dinheiro em papel ou cartões no bolso?",
@@ -1793,6 +1921,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0129",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual é o nome da pessoa que nasce na mesma data que outra?",
@@ -1807,6 +1936,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0130",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual aparelho mantém alimentos refrigerados em casa?",
@@ -1821,6 +1951,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0131",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Média",
     "question": "Qual objeto é usado para escrever em quadro branco?",
@@ -1835,6 +1966,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0132",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Avançada",
     "question": "Qual item é usado para escovar o cabelo?",
@@ -1849,6 +1981,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0133",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Avançada",
     "question": "Qual é o nome do local onde aviões pousam e decolam?",
@@ -1863,6 +1996,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0134",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Avançada",
     "question": "Qual símbolo costuma representar uma ideia?",
@@ -1877,6 +2011,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0135",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Avançada",
     "question": "Qual objeto é usado para marcar páginas de um livro?",
@@ -1891,6 +2026,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0136",
+    "source": "local",
     "area": "Cultura geral",
     "difficulty": "Avançada",
     "question": "Qual doce brasileiro é feito com leite condensado e chocolate?",
@@ -1905,6 +2041,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0137",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual é o nome do bicho de estimação do Bob Esponja?",
@@ -1919,6 +2056,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0138",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual bruxo tem uma cicatriz em forma de raio?",
@@ -1933,6 +2071,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0139",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual herói da Marvel usa um escudo redondo?",
@@ -1947,6 +2086,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0140",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual personagem da DC é conhecido como Homem-Morcego?",
@@ -1961,6 +2101,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0141",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual filme tem um boneco cowboy chamado Woody?",
@@ -1975,6 +2116,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0142",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual desenho tem a família Simpson?",
@@ -1989,6 +2131,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0143",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual personagem azul corre em alta velocidade nos videogames?",
@@ -2003,6 +2146,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0144",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual encanador de videogame usa boné vermelho com a letra M?",
@@ -2017,6 +2161,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0145",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual franquia tem sabres de luz?",
@@ -2031,6 +2176,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0146",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual série tem dragões e a família Targaryen?",
@@ -2045,6 +2191,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0147",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual cantora ficou conhecida como Rainha do Pop?",
@@ -2059,6 +2206,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0148",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual cantor é chamado de Rei do Pop?",
@@ -2073,6 +2221,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0149",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual banda lançou a canção Bohemian Rhapsody?",
@@ -2087,6 +2236,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0150",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual personagem de desenho vive dizendo que viu um gatinho?",
@@ -2101,6 +2251,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0151",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Fácil",
     "question": "Qual personagem ama lasanha e odeia segunda-feira?",
@@ -2115,6 +2266,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0152",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual filme tem o personagem Jack Sparrow?",
@@ -2129,6 +2281,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0153",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual princesa da Disney perde um sapatinho de cristal?",
@@ -2143,6 +2296,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0154",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual princesa da Disney vive no fundo do mar?",
@@ -2157,6 +2311,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0155",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual desenho tem um rato chamado Mickey?",
@@ -2171,6 +2326,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0156",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual personagem amarelo dos videogames come pontos em labirintos?",
@@ -2185,6 +2341,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0157",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual jogo de blocos usa peças chamadas tetriminos?",
@@ -2199,6 +2356,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0158",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual série popular tem o grupo de amigos de Central Perk?",
@@ -2213,6 +2371,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0159",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual filme animado tem um peixe chamado Nemo?",
@@ -2227,6 +2386,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0160",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual personagem da Turma da Mônica troca o R pelo L?",
@@ -2241,6 +2401,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0161",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual personagem da Turma da Mônica é forte e dona do Sansão?",
@@ -2255,6 +2416,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0162",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual personagem usa um anel para se transformar em herói no desenho brasileiro?",
@@ -2269,6 +2431,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0163",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual saga tem a escola Hogwarts?",
@@ -2283,6 +2446,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0164",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual filme tem um leão chamado Simba?",
@@ -2297,6 +2461,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0165",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Média",
     "question": "Qual personagem verde diz que ogros são como cebolas?",
@@ -2311,6 +2476,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0166",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Avançada",
     "question": "Qual reality show confina participantes em uma casa vigiada por câmeras?",
@@ -2325,6 +2491,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0167",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Avançada",
     "question": "Qual boneca famosa tem um namorado chamado Ken?",
@@ -2339,6 +2506,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0168",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Avançada",
     "question": "Qual personagem usa uma máscara e mora no pântano em uma animação de ogro?",
@@ -2353,6 +2521,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0169",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Avançada",
     "question": "Qual super-herói é picado por uma aranha radioativa em sua origem clássica?",
@@ -2367,6 +2536,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0170",
+    "source": "local",
     "area": "Cultura pop",
     "difficulty": "Avançada",
     "question": "Qual banda britânica tinha John, Paul, George e Ringo?",
@@ -2381,6 +2551,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0171",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Em qual esporte se usa uma cesta e uma bola laranja?",
@@ -2395,6 +2566,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0172",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Em qual esporte o objetivo é marcar gols com os pés?",
@@ -2409,6 +2581,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0173",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte usa uma raquete e uma peteca?",
@@ -2423,6 +2596,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0174",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte usa uma rede alta e pode ter manchete e cortada?",
@@ -2437,6 +2611,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0175",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte é praticado em uma piscina com nados diferentes?",
@@ -2451,6 +2626,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0176",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte tem golpes chamados jab e direto?",
@@ -2465,6 +2641,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0177",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte usa kimono e busca imobilizações ou projeções?",
@@ -2479,6 +2656,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0178",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte usa taco, luva e bases?",
@@ -2493,6 +2671,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0179",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte tem touchdowns?",
@@ -2507,6 +2686,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0180",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte usa discos chamados puck?",
@@ -2521,6 +2701,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0181",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual prova combina natação, ciclismo e corrida?",
@@ -2535,6 +2716,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0182",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual modalidade olímpica usa barras paralelas e argolas?",
@@ -2549,6 +2731,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0183",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte é associado a birdie, eagle e tacadas?",
@@ -2563,6 +2746,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0184",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte é disputado em sets e usa quadra dividida por rede?",
@@ -2577,6 +2761,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0185",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Fácil",
     "question": "Qual esporte tem o termo 'xeque-mate'?",
@@ -2591,6 +2776,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0186",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual corrida tem 42,195 km?",
@@ -2605,6 +2791,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0187",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual esporte usa prancha sobre ondas?",
@@ -2619,6 +2806,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0188",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual esporte usa florete, espada ou sabre?",
@@ -2633,6 +2821,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0189",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual esporte tem arremesso de peso?",
@@ -2647,6 +2836,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0190",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual esporte usa cavalo com obstáculos em pista?",
@@ -2661,6 +2851,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0191",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual modalidade usa arco e flecha?",
@@ -2675,6 +2866,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0192",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual esporte brasileiro mistura luta, música e roda?",
@@ -2689,6 +2881,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0193",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual competição de futebol reúne seleções nacionais a cada quatro anos?",
@@ -2703,6 +2896,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0194",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual cor de cartão expulsa um jogador no futebol?",
@@ -2717,6 +2911,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0195",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Quantos jogadores cada time tem em campo no futebol tradicional?",
@@ -2731,6 +2926,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0196",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Quantos pontos vale uma cesta de lance livre no basquete?",
@@ -2745,6 +2941,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0197",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual esporte tem uma posição chamada goleiro?",
@@ -2759,6 +2956,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0198",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual esporte tem uma posição chamada levantador?",
@@ -2773,6 +2971,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0199",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Média",
     "question": "Qual esporte usa capacete e bicicleta em pistas ou estradas?",
@@ -2787,6 +2986,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0200",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Avançada",
     "question": "Qual arte marcial tem faixas coloridas para indicar graduação?",
@@ -2801,6 +3001,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0201",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Avançada",
     "question": "Qual modalidade é praticada sobre patins no gelo com coreografias?",
@@ -2815,6 +3016,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0202",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Avançada",
     "question": "Qual esporte usa bola oval e scrum?",
@@ -2829,6 +3031,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0203",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Avançada",
     "question": "Qual esporte de mesa usa bolinhas e raquetes pequenas?",
@@ -2843,6 +3046,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0204",
+    "source": "local",
     "area": "Esportes",
     "difficulty": "Avançada",
     "question": "Qual esporte usa alvos e armas de ar comprimido ou fogo em provas controladas?",
@@ -2857,6 +3061,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0205",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Qual é a capital de Acre?",
@@ -2871,6 +3076,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0206",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Em qual região fica Acre?",
@@ -2885,6 +3091,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0207",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Qual é a capital de Alagoas?",
@@ -2899,6 +3106,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0208",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Em qual região fica Alagoas?",
@@ -2913,6 +3121,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0209",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Qual é a capital de Amapá?",
@@ -2927,6 +3136,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0210",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Em qual região fica Amapá?",
@@ -2941,6 +3151,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0211",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Qual é a capital de Amazonas?",
@@ -2955,6 +3166,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0212",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Em qual região fica Amazonas?",
@@ -2969,6 +3181,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0213",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Qual é a capital de Bahia?",
@@ -2983,6 +3196,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0214",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Em qual região fica Bahia?",
@@ -2997,6 +3211,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0215",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Qual é a capital de Ceará?",
@@ -3011,6 +3226,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0216",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Em qual região fica Ceará?",
@@ -3025,6 +3241,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0217",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Qual é a capital de Distrito Federal?",
@@ -3039,6 +3256,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0218",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Em qual região fica Distrito Federal?",
@@ -3053,6 +3271,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0219",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Fácil",
     "question": "Qual é a capital de Espírito Santo?",
@@ -3067,6 +3286,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0220",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Em qual região fica Espírito Santo?",
@@ -3081,6 +3301,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0221",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Qual é a capital de Goiás?",
@@ -3095,6 +3316,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0222",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Em qual região fica Goiás?",
@@ -3109,6 +3331,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0223",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Qual é a capital de Maranhão?",
@@ -3123,6 +3346,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0224",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Em qual região fica Maranhão?",
@@ -3137,6 +3361,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0225",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Qual é a capital de Mato Grosso?",
@@ -3151,6 +3376,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0226",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Em qual região fica Mato Grosso?",
@@ -3165,6 +3391,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0227",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Qual é a capital de Mato Grosso do Sul?",
@@ -3179,6 +3406,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0228",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Em qual região fica Mato Grosso do Sul?",
@@ -3193,6 +3421,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0229",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Qual é a capital de Minas Gerais?",
@@ -3207,6 +3436,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0230",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Em qual região fica Minas Gerais?",
@@ -3221,6 +3451,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0231",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Qual é a capital de Pará?",
@@ -3235,6 +3466,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0232",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Em qual região fica Pará?",
@@ -3249,6 +3481,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0233",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Média",
     "question": "Qual é a capital de Paraíba?",
@@ -3263,6 +3496,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0234",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Avançada",
     "question": "Em qual região fica Paraíba?",
@@ -3277,6 +3511,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0235",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Avançada",
     "question": "Qual é a capital de Paraná?",
@@ -3291,6 +3526,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0236",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Avançada",
     "question": "Em qual região fica Paraná?",
@@ -3305,6 +3541,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0237",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Avançada",
     "question": "Qual é a capital de Pernambuco?",
@@ -3319,6 +3556,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0238",
+    "source": "local",
     "area": "Brasil",
     "difficulty": "Avançada",
     "question": "Em qual região fica Pernambuco?",
@@ -3333,6 +3571,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0239",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual mamífero é conhecido por botar ovos?",
@@ -3347,6 +3586,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0240",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual animal é o maior mamífero do planeta?",
@@ -3361,6 +3601,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0241",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual ave não voa e é símbolo da Antártida?",
@@ -3375,6 +3616,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0242",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual animal terrestre é conhecido pelo pescoço longo?",
@@ -3389,6 +3631,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0243",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual felino é o mais veloz em corrida curta?",
@@ -3403,6 +3646,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0244",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual animal muda de cor para se camuflar?",
@@ -3417,6 +3661,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0245",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual inseto produz mel?",
@@ -3431,6 +3676,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0246",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual animal constrói barragens com galhos?",
@@ -3445,6 +3691,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0247",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual peixe é famoso por inflar o corpo?",
@@ -3459,6 +3706,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0248",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual réptil carrega uma carapaça nas costas?",
@@ -3473,6 +3721,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0249",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual animal tem tromba?",
@@ -3487,6 +3736,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0250",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual animal é conhecido por ter listras pretas e brancas?",
@@ -3501,6 +3751,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0251",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual ave é associada a imitar sons e fala humana?",
@@ -3515,6 +3766,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0252",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual animal vive em colônias e é símbolo de organização?",
@@ -3529,6 +3781,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0253",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Fácil",
     "question": "Qual animal é conhecido por carregar o filhote em uma bolsa?",
@@ -3543,6 +3796,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0254",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual animal marinho tem oito braços?",
@@ -3557,6 +3811,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0255",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual animal tem espinhos pelo corpo e se enrola para defesa?",
@@ -3571,6 +3826,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0256",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual animal é conhecido como rei da selva?",
@@ -3585,6 +3841,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0257",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual ave bota os maiores ovos atuais?",
@@ -3599,6 +3856,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0258",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual animal é símbolo do WWF?",
@@ -3613,6 +3871,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0259",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual inseto passa por metamorfose e vira borboleta?",
@@ -3627,6 +3886,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0260",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual anfíbio começa a vida como girino?",
@@ -3641,6 +3901,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0261",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual animal usa ecolocalização para se orientar no escuro?",
@@ -3655,6 +3916,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0262",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual animal é conhecido por dormir pendurado de cabeça para baixo?",
@@ -3669,6 +3931,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0263",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual animal tem uma juba característica nos machos?",
@@ -3683,6 +3946,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0264",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual animal é famoso por sua memória em ditados populares?",
@@ -3697,6 +3961,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0265",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual réptil rasteja sem pernas?",
@@ -3711,6 +3976,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0266",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual animal é conhecido por soltar tinta na água?",
@@ -3725,6 +3991,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0267",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Média",
     "question": "Qual ave é símbolo da paz?",
@@ -3739,6 +4006,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0268",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Avançada",
     "question": "Qual animal é criado para produzir lã?",
@@ -3753,6 +4021,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0269",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Avançada",
     "question": "Qual animal é conhecido por seu casco e passo lento?",
@@ -3767,6 +4036,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0270",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Avançada",
     "question": "Qual inseto canta esfregando partes do corpo?",
@@ -3781,6 +4051,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0271",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Avançada",
     "question": "Qual animal da Amazônia é um grande peixe de água doce?",
@@ -3795,6 +4066,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0272",
+    "source": "local",
     "area": "Animais e natureza",
     "difficulty": "Avançada",
     "question": "Qual felino é símbolo da fauna brasileira e tem pintas?",
@@ -3809,6 +4081,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0273",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual é o plural de pão?",
@@ -3823,6 +4096,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0274",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual é o plural de cidadão?",
@@ -3837,6 +4111,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0275",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual é o plural de animal?",
@@ -3851,6 +4126,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0276",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual palavra está escrita corretamente?",
@@ -3865,6 +4141,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0277",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual é o antônimo de cedo?",
@@ -3879,6 +4156,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0278",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual é o antônimo de claro?",
@@ -3893,6 +4171,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0279",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual é o sinônimo de alegre?",
@@ -3907,6 +4186,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0280",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual é o sinônimo de veloz?",
@@ -3921,6 +4201,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0281",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual classe de palavra dá nome a seres, objetos e lugares?",
@@ -3935,6 +4216,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0282",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual classe de palavra indica ação, estado ou fenômeno?",
@@ -3949,6 +4231,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0283",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual classe de palavra caracteriza um substantivo?",
@@ -3963,6 +4246,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0284",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual sinal marca uma pergunta direta?",
@@ -3977,6 +4261,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0285",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual sinal costuma indicar uma pausa curta?",
@@ -3991,6 +4276,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0286",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual acento aparece em 'avó'?",
@@ -4005,6 +4291,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0287",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Fácil",
     "question": "Qual acento aparece em 'você'?",
@@ -4019,6 +4306,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0288",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual palavra é oxítona?",
@@ -4033,6 +4321,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0289",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual palavra é paroxítona?",
@@ -4047,6 +4336,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0290",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual palavra é proparoxítona?",
@@ -4061,6 +4351,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0291",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual é o feminino de ator?",
@@ -4075,6 +4366,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0292",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual é o masculino de abelha-rainha?",
@@ -4089,6 +4381,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0293",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual palavra completa: Eu ___ ao mercado ontem.?",
@@ -4103,6 +4396,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0294",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual palavra completa: Eles ___ felizes.?",
@@ -4117,6 +4411,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0295",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual palavra completa: Nós ___ estudar.?",
@@ -4131,6 +4426,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0296",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual forma é mais adequada: ___ muitas pessoas na sala.?",
@@ -4145,6 +4441,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0297",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual é a forma correta?",
@@ -4159,6 +4456,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0298",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual palavra indica lugar?",
@@ -4173,6 +4471,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0299",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual palavra indica motivo?",
@@ -4187,6 +4486,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0300",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual palavra indica uma resposta explicativa?",
@@ -4201,6 +4501,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0301",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Média",
     "question": "Qual é o aumentativo comum de casa?",
@@ -4215,6 +4516,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0302",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Avançada",
     "question": "Qual é o diminutivo comum de livro?",
@@ -4229,6 +4531,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0303",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Avançada",
     "question": "Qual palavra tem dígrafo?",
@@ -4243,6 +4546,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0304",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Avançada",
     "question": "Qual palavra tem encontro consonantal?",
@@ -4257,6 +4561,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0305",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Avançada",
     "question": "Qual palavra tem hiato?",
@@ -4271,6 +4576,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0306",
+    "source": "local",
     "area": "Língua portuguesa",
     "difficulty": "Avançada",
     "question": "Qual palavra tem ditongo?",
@@ -4285,6 +4591,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0307",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "De quem é a frase 'Penso, logo existo'?",
@@ -4299,6 +4606,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0308",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Quem escreveu Dom Casmurro?",
@@ -4313,6 +4621,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0309",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Quem escreveu O Pequeno Príncipe?",
@@ -4327,6 +4636,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0310",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Quem pintou A Noite Estrelada?",
@@ -4341,6 +4651,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0311",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Qual artista espanhol pintou Guernica?",
@@ -4355,6 +4666,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0312",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Qual compositor ficou conhecido pela Quinta Sinfonia?",
@@ -4369,6 +4681,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0313",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Qual compositor austríaco foi um menino prodígio da música clássica?",
@@ -4383,6 +4696,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0314",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Qual escritora criou a personagem Hermione Granger?",
@@ -4397,6 +4711,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0315",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Quem escreveu Romeu e Julieta?",
@@ -4411,6 +4726,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0316",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Quem escreveu A Hora da Estrela?",
@@ -4425,6 +4741,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0317",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Quem escreveu Vidas Secas?",
@@ -4439,6 +4756,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0318",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Quem escreveu Capitães da Areia?",
@@ -4453,6 +4771,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0319",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Quem escreveu Os Lusíadas?",
@@ -4467,6 +4786,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0320",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Qual movimento artístico tem Tarsila do Amaral como grande nome no Brasil?",
@@ -4481,6 +4801,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0321",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Fácil",
     "question": "Qual pintura brasileira mostra uma figura de pés grandes ao lado de um cacto?",
@@ -4495,6 +4816,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0322",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual gênero literário costuma ter versos?",
@@ -4509,6 +4831,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0323",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual gênero teatral tem final triste ou grave?",
@@ -4523,6 +4846,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0324",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual gênero teatral busca provocar riso?",
@@ -4537,6 +4861,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0325",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual arte trabalha principalmente com sons organizados no tempo?",
@@ -4551,6 +4876,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0326",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual arte trabalha com movimentos corporais ritmados?",
@@ -4565,6 +4891,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0327",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual arte cria imagens com tinta sobre superfície?",
@@ -4579,6 +4906,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0328",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual arte cria formas tridimensionais?",
@@ -4593,6 +4921,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0329",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual instrumento tem teclas brancas e pretas?",
@@ -4607,6 +4936,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0330",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual instrumento tem seis cordas na forma mais comum?",
@@ -4621,6 +4951,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0331",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual instrumento é tocado com arco e apoiado no ombro?",
@@ -4635,6 +4966,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0332",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual instrumento de percussão marca ritmo com baquetas?",
@@ -4649,6 +4981,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0333",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual museu de Paris abriga a Mona Lisa?",
@@ -4663,6 +4996,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0334",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual cidade italiana é famosa por canais e gôndolas?",
@@ -4677,6 +5011,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0335",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Média",
     "question": "Qual artista pintou o teto da Capela Sistina?",
@@ -4691,6 +5026,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0336",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Avançada",
     "question": "Qual livro começa com a busca de um capitão por uma baleia branca?",
@@ -4705,6 +5041,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0337",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Avançada",
     "question": "Qual personagem literário luta contra moinhos de vento?",
@@ -4719,6 +5056,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0338",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Avançada",
     "question": "Qual escritor criou Sherlock Holmes?",
@@ -4733,6 +5071,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0339",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Avançada",
     "question": "Qual escritora brasileira escreveu Quarto de Despejo?",
@@ -4747,6 +5086,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0340",
+    "source": "local",
     "area": "Artes e literatura",
     "difficulty": "Avançada",
     "question": "Qual movimento artístico usa imagens de consumo e cultura popular?",
@@ -4761,6 +5101,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0341",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "O que significa HTTPS?",
@@ -4775,6 +5116,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0342",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual linguagem estrutura o conteúdo de uma página web?",
@@ -4789,6 +5131,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0343",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual linguagem estiliza cores, fontes e layout em páginas web?",
@@ -4803,6 +5146,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0344",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual linguagem costuma controlar cliques e interações no navegador?",
@@ -4817,6 +5161,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0345",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual componente armazena dados de forma permanente no computador?",
@@ -4831,6 +5176,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0346",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual componente é conhecido como cérebro do computador?",
@@ -4845,6 +5191,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0347",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual memória é temporária e usada enquanto programas estão abertos?",
@@ -4859,6 +5206,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0348",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual item protege contas com uma camada extra além da senha?",
@@ -4873,6 +5221,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0349",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual ataque tenta enganar pessoas com mensagens falsas?",
@@ -4887,6 +5236,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0350",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual símbolo aparece em endereços de e-mail?",
@@ -4901,6 +5251,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0351",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual arquivo costuma ser a página inicial de um site estático?",
@@ -4915,6 +5266,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0352",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual formato de imagem costuma preservar transparência?",
@@ -4929,6 +5281,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0353",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual formato é muito usado para fotos compactadas?",
@@ -4943,6 +5296,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0354",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual formato é usado para documentos portáveis?",
@@ -4957,6 +5311,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0355",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Fácil",
     "question": "Qual serviço traduz nomes de sites em endereços IP?",
@@ -4971,6 +5326,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0356",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual rede permite conectar dispositivos próximos sem fio?",
@@ -4985,6 +5341,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0357",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual tecnologia conecta dispositivos à internet sem fio em casa?",
@@ -4999,6 +5356,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0358",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual comando salva alterações versionadas em Git?",
@@ -5013,6 +5371,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0359",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual comando envia commits locais para um repositório remoto?",
@@ -5027,6 +5386,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0360",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual comando baixa alterações de um repositório remoto?",
@@ -5041,6 +5401,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0361",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual plataforma é muito usada para hospedar repositórios Git?",
@@ -5055,6 +5416,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0362",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual tecnologia permite executar código em navegadores modernos?",
@@ -5069,6 +5431,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0363",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual elemento de formulário aceita uma senha sem mostrar os caracteres?",
@@ -5083,6 +5446,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0364",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual armazenamento do navegador guarda dados sem expirar automaticamente?",
@@ -5097,6 +5461,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0365",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual API do navegador pode gerar sons sem arquivos de áudio?",
@@ -5111,6 +5476,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0366",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual sigla representa inteligência artificial?",
@@ -5125,6 +5491,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0367",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual termo descreve programas maliciosos em geral?",
@@ -5139,6 +5506,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0368",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual cópia de segurança ajuda a recuperar arquivos perdidos?",
@@ -5153,6 +5521,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0369",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Média",
     "question": "Qual peça exibe imagens geradas pelo computador?",
@@ -5167,6 +5536,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0370",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Avançada",
     "question": "Qual periférico move o cursor na tela?",
@@ -5181,6 +5551,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0371",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Avançada",
     "question": "Qual tecla costuma confirmar uma ação ou quebra de linha?",
@@ -5195,6 +5566,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0372",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Avançada",
     "question": "Qual tecla apaga caracteres à esquerda do cursor?",
@@ -5209,6 +5581,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0373",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Avançada",
     "question": "Qual tecla alterna letras maiúsculas fixas?",
@@ -5223,6 +5596,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0374",
+    "source": "local",
     "area": "Tecnologia",
     "difficulty": "Avançada",
     "question": "Qual unidade mede armazenamento digital?",
@@ -5237,6 +5611,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0375",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual mineral é muito associado à saúde dos ossos?",
@@ -5251,6 +5626,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0376",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual nutriente é a principal fonte rápida de energia para o corpo?",
@@ -5265,6 +5641,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0377",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual nutriente ajuda na construção e reparo de tecidos?",
@@ -5279,6 +5656,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0378",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual tipo de gordura deve aparecer em menor quantidade nos rótulos?",
@@ -5293,6 +5671,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0379",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual bebida é essencial para hidratação diária?",
@@ -5307,6 +5686,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0380",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual grupo alimentar inclui feijão, lentilha e grão-de-bico?",
@@ -5321,6 +5701,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0381",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual fruta é famosa por conter vitamina C?",
@@ -5335,6 +5716,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0382",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual alimento é conhecido por ser fonte de ômega-3?",
@@ -5349,6 +5731,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0383",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual item do rótulo mostra energia em kcal?",
@@ -5363,6 +5746,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0384",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual parte do rótulo lista ingredientes em ordem de quantidade?",
@@ -5377,6 +5761,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0385",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual expressão indica porção recomendada no rótulo?",
@@ -5391,6 +5776,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0386",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual alimento é fonte comum de fibras?",
@@ -5405,6 +5791,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0387",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual hábito ajuda a perceber fome e saciedade?",
@@ -5419,6 +5806,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0388",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual refeição costuma abrir o dia?",
@@ -5433,6 +5821,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0389",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Fácil",
     "question": "Qual nutriente não fornece calorias, mas é indispensável?",
@@ -5447,6 +5836,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0390",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual vitamina é muito associada à coagulação do sangue?",
@@ -5461,6 +5851,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0391",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual mineral é parte da hemoglobina?",
@@ -5475,6 +5866,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0392",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual alimento é derivado do leite?",
@@ -5489,6 +5881,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0393",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual método usa calor seco para preparar alimentos?",
@@ -5503,6 +5896,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0394",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual método usa água fervente?",
@@ -5517,6 +5911,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0395",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual sabor é percebido em alimentos como limão?",
@@ -5531,6 +5926,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0396",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual sabor é associado ao açúcar?",
@@ -5545,6 +5941,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0397",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual alimento é uma oleaginosa?",
@@ -5559,6 +5956,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0398",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual nutriente aparece em maior quantidade em óleos?",
@@ -5573,6 +5971,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0399",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual opção é um cereal?",
@@ -5587,6 +5986,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0400",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual opção é uma hortaliça folhosa?",
@@ -5601,6 +6001,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0401",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual opção é uma raiz comestível?",
@@ -5615,6 +6016,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0402",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual alimento é fonte vegetal comum de proteína?",
@@ -5629,6 +6031,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0403",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Média",
     "question": "Qual alimento é conhecido por conter potássio?",
@@ -5643,6 +6046,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0404",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Avançada",
     "question": "Qual termo indica ausência de glúten?",
@@ -5657,6 +6061,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0405",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Avançada",
     "question": "Qual grão é base do pão tradicional?",
@@ -5671,6 +6076,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0406",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Avançada",
     "question": "Qual produto é feito pela fermentação do leite?",
@@ -5685,6 +6091,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0407",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Avançada",
     "question": "Qual nutriente é abundante em frutas e verduras e ajuda o intestino?",
@@ -5699,6 +6106,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0408",
+    "source": "local",
     "area": "Nutrição",
     "difficulty": "Avançada",
     "question": "Qual cuidado simples reduz risco de contaminação na cozinha?",
@@ -5713,6 +6121,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0409",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual é o nome popular dos terceiros molares?",
@@ -5727,6 +6136,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0410",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual item é usado com creme dental para limpar os dentes?",
@@ -5741,6 +6151,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0411",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual fio ajuda a limpar entre os dentes?",
@@ -5755,6 +6166,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0412",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual profissional cuida da saúde bucal?",
@@ -5769,6 +6181,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0413",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual parte visível do dente fica acima da gengiva?",
@@ -5783,6 +6196,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0414",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual parte prende o dente ao osso?",
@@ -5797,6 +6211,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0415",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual tecido duro reveste a coroa do dente?",
@@ -5811,6 +6226,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0416",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual tecido fica abaixo do esmalte?",
@@ -5825,6 +6241,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0417",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual tecido mole fica no centro do dente?",
@@ -5839,6 +6256,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0418",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual problema é causado pela ação de bactérias e ácidos no dente?",
@@ -5853,6 +6271,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0419",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual placa pegajosa se forma nos dentes?",
@@ -5867,6 +6286,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0420",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual substância ajuda a fortalecer o esmalte contra cáries?",
@@ -5881,6 +6301,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0421",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual proteção pode ser usada no dente para prevenir cárie em sulcos?",
@@ -5895,6 +6316,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0422",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual exame de imagem ajuda a ver estruturas internas dos dentes?",
@@ -5909,6 +6331,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0423",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Fácil",
     "question": "Qual material pode restaurar pequenas perdas dentárias?",
@@ -5923,6 +6346,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0424",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual especialidade alinha dentes com aparelhos?",
@@ -5937,6 +6361,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0425",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual aparelho pode ser usado para alinhar dentes?",
@@ -5951,6 +6376,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0426",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual parte rosada envolve os dentes?",
@@ -5965,6 +6391,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0427",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual sangramento ao escovar pode indicar inflamação gengival?",
@@ -5979,6 +6406,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0428",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual dente costuma cortar alimentos na frente da boca?",
@@ -5993,6 +6421,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0429",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual dente pontudo ajuda a rasgar alimentos?",
@@ -6007,6 +6436,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0430",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual dente posterior ajuda a triturar alimentos?",
@@ -6021,6 +6451,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0431",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual dente fica entre caninos e molares?",
@@ -6035,6 +6466,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0432",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Quantos dentes permanentes um adulto costuma ter, incluindo sisos?",
@@ -6049,6 +6481,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0433",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Quantos dentes de leite uma criança costuma ter?",
@@ -6063,6 +6496,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0434",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual hábito diário ajuda a controlar biofilme dental?",
@@ -6077,6 +6511,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0435",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual açúcar frequente na dieta favorece cáries quando a higiene é ruim?",
@@ -6091,6 +6526,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0436",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual instrumento odontológico aspira saliva durante o atendimento?",
@@ -6105,6 +6541,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0437",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Média",
     "question": "Qual cadeira é usada no consultório odontológico?",
@@ -6119,6 +6556,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0438",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Avançada",
     "question": "Qual luz auxilia a visão do dentista durante o atendimento?",
@@ -6133,6 +6571,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0439",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Avançada",
     "question": "Qual molde registra formato dos dentes?",
@@ -6147,6 +6586,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0440",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Avançada",
     "question": "Qual protetor pode ser usado por atletas para proteger dentes?",
@@ -6161,6 +6601,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0441",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Avançada",
     "question": "Qual especialidade trata gengiva e estruturas de suporte?",
@@ -6175,6 +6616,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0442",
+    "source": "local",
     "area": "Odontologia",
     "difficulty": "Avançada",
     "question": "Qual especialidade trata canal dentário?",
@@ -6189,6 +6631,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0443",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual profissional costuma aferir pressão arterial em triagens de saúde?",
@@ -6203,6 +6646,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0444",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual equipamento mede pressão arterial?",
@@ -6217,6 +6661,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0445",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual instrumento escuta sons cardíacos e respiratórios?",
@@ -6231,6 +6676,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0446",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual sinal vital indica batimentos por minuto?",
@@ -6245,6 +6691,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0447",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual sinal vital indica calor corporal?",
@@ -6259,6 +6706,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0448",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual equipamento mede temperatura?",
@@ -6273,6 +6721,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0449",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual equipamento mede oxigenação no dedo?",
@@ -6287,6 +6736,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0450",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual sigla costuma indicar equipamento de proteção individual?",
@@ -6301,6 +6751,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0451",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual EPI protege as mãos?",
@@ -6315,6 +6766,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0452",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual EPI protege nariz e boca?",
@@ -6329,6 +6781,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0453",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual prática simples reduz transmissão de microrganismos?",
@@ -6343,6 +6796,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0454",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual líquido pode ser usado para higienização das mãos quando indicado?",
@@ -6357,6 +6811,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0455",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual documento registra cuidados e observações do paciente?",
@@ -6371,6 +6826,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0456",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual local costuma receber pacientes para primeira avaliação?",
@@ -6385,6 +6841,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0457",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Fácil",
     "question": "Qual termo indica medicamento aplicado por injeção na veia?",
@@ -6399,6 +6856,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0458",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual termo indica aplicação no músculo?",
@@ -6413,6 +6871,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0459",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual termo indica aplicação sob a pele?",
@@ -6427,6 +6886,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0460",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual material perfurocortante exige descarte em recipiente rígido?",
@@ -6441,6 +6901,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0461",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual objeto identifica o paciente no punho?",
@@ -6455,6 +6916,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0462",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual conferência evita trocar pacientes antes de procedimentos?",
@@ -6469,6 +6931,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0463",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual sinal indica número de respirações por minuto?",
@@ -6483,6 +6946,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0464",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual medida usa quilogramas no prontuário?",
@@ -6497,6 +6961,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0465",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual medida usa centímetros ou metros?",
@@ -6511,6 +6976,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0466",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual posição deixa a pessoa deitada de barriga para cima?",
@@ -6525,6 +6991,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0467",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual posição deixa a pessoa de lado?",
@@ -6539,6 +7006,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0468",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual item ajuda a transportar pacientes sentados?",
@@ -6553,6 +7021,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0469",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual item ajuda a transportar pacientes deitados?",
@@ -6567,6 +7036,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0470",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual área do hospital prepara materiais esterilizados?",
@@ -6581,6 +7051,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0471",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Média",
     "question": "Qual técnica reduz microrganismos em materiais?",
@@ -6595,6 +7066,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0472",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Avançada",
     "question": "Qual termo indica ausência de contaminação por microrganismos?",
@@ -6609,6 +7081,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0473",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Avançada",
     "question": "Qual bolsa coleta urina em alguns pacientes?",
@@ -6623,6 +7096,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0474",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Avançada",
     "question": "Qual medida evita quedas em pacientes com risco?",
@@ -6637,6 +7111,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0475",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Avançada",
     "question": "Qual sinal no leito ajuda equipes a perceber precauções especiais?",
@@ -6651,6 +7126,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0476",
+    "source": "local",
     "area": "Enfermagem",
     "difficulty": "Avançada",
     "question": "Qual termo descreve limpeza de uma superfície?",
@@ -6665,6 +7141,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0477",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Se uma dúzia tem 12 unidades, quanto é meia dúzia?",
@@ -6679,6 +7156,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0478",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Qual número vem depois de 99?",
@@ -6693,6 +7171,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0479",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Qual é o dobro de 25?",
@@ -6707,6 +7186,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0480",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Qual é a metade de 80?",
@@ -6721,6 +7201,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0481",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Quantos lados tem um triângulo?",
@@ -6735,6 +7216,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0482",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Quantos lados tem um quadrado?",
@@ -6749,6 +7231,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0483",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Quantos graus tem uma volta completa?",
@@ -6763,6 +7246,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0484",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Quantos minutos tem uma hora?",
@@ -6777,6 +7261,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0485",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Quantos segundos tem um minuto?",
@@ -6791,6 +7276,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0486",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Quantos centímetros tem um metro?",
@@ -6805,6 +7291,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0487",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Fácil",
     "question": "Qual número é par?",
@@ -6819,6 +7306,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0488",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Média",
     "question": "Qual número é ímpar?",
@@ -6833,6 +7321,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0489",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Média",
     "question": "Se hoje é segunda, que dia vem depois de amanhã?",
@@ -6847,6 +7336,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0490",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Média",
     "question": "Qual forma geométrica não tem lados?",
@@ -6861,6 +7351,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0491",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Média",
     "question": "Qual é o próximo número da sequência 2, 4, 6, 8?",
@@ -6875,6 +7366,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0492",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Média",
     "question": "Qual é o próximo número da sequência 5, 10, 15, 20?",
@@ -6889,6 +7381,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0493",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Média",
     "question": "Qual é o resultado de 9 + 6?",
@@ -6903,6 +7396,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0494",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Média",
     "question": "Qual é o resultado de 12 - 7?",
@@ -6917,6 +7411,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0495",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Média",
     "question": "Qual é o resultado de 3 × 7?",
@@ -6931,6 +7426,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0496",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Média",
     "question": "Qual é o resultado de 48 ÷ 6?",
@@ -6945,6 +7441,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0497",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Média",
     "question": "Qual fração representa metade?",
@@ -6959,6 +7456,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0498",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Avançada",
     "question": "Qual fração representa um quarto?",
@@ -6973,6 +7471,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0499",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Avançada",
     "question": "Qual número romano representa 10?",
@@ -6987,6 +7486,7 @@ window.QUESTION_BANK = [
   },
   {
     "id": "Q0500",
+    "source": "local",
     "area": "Matemática e raciocínio",
     "difficulty": "Avançada",
     "question": "Qual número romano representa 5?",

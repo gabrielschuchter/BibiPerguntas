@@ -6,6 +6,18 @@
   const QUESTION_BANK = Array.isArray(window.QUESTION_BANK) ? window.QUESTION_BANK : [];
   const COLORS = ["#7dd3fc", "#a78bfa", "#34d399", "#fbbf24", "#fb7185", "#f472b6", "#38bdf8", "#c4b5fd"];
   const CIRC = 2 * Math.PI * 52;
+  const CACHE_KEY = "batalhaPerguntasQuestionCache.v1";
+  const TRYVIA_TOKEN_KEY = "batalhaPerguntasTryviaToken.v1";
+  const OPENTDB_TOKEN_KEY = "batalhaPerguntasOpenTdbToken.v1";
+  const FORBIDDEN_QUESTION_PATTERNS = [
+    /Rodada técnica/i, /Pergunta clássica/i, /Questão gerada/i, /Curiosidade geral/i,
+    /Pergunta\s*#\d+/i, /Rodada\s*#\d+/i, /Técnica leve\s*#\d+/i,
+    /O que está sendo descrito/i, /Qual alternativa corresponde a esta pista/i,
+    /Qual resposta combina melhor com esta descrição/i, /Qual opção se encaixa na explicação/i
+  ];
+  const UNSTABLE_PATTERNS = [/\batualmente\b/i, /\bhoje\b/i, /presidente atual/i, /campeão atual/i, /ranking atual/i, /CEO atual/i];
+  const PORTUGUESE_HINTS = /\b(qual|quem|onde|quando|como|por que|Brasil|brasileir|é|ção|ções|ã|õ|á|é|í|ó|ú|ç)\b/i;
+  const ENGLISH_HINTS = /\b(what|which|who|where|when|how many|according to|following|true|false)\b/i;
 
   const els = {
     setupView: $("#setupView"), gameView: $("#gameView"), winnerView: $("#winnerView"),
@@ -18,9 +30,10 @@
     gameTitle: $("#gameTitle"), answers: $("#answers"), feedback: $("#feedback"),
     teamHelpBtn: $("#teamHelpBtn"), googleHelpBtn: $("#googleHelpBtn"), timeHelpBtn: $("#timeHelpBtn"),
     timerWrap: $("#timerWrap"), timerLabel: $("#timerLabel"), timerText: $("#timerText"), timerProgress: $("#timerProgress"), skipBtn: $("#skipBtn"), nextBtn: $("#nextBtn"),
-    pauseBtn: $("#pauseBtn"), resetBtn: $("#resetBtn"), rulesBtn: $("#rulesBtn"), closeRulesBtn: $("#closeRulesBtn"),
+    pauseBtn: $("#pauseBtn"), resetBtn: $("#resetBtn"), clearCacheBtn: $("#clearCacheBtn"), rulesBtn: $("#rulesBtn"), closeRulesBtn: $("#closeRulesBtn"),
     rulesDialog: $("#rulesDialog"), winnerTitle: $("#winnerTitle"), winnerText: $("#winnerText"),
-    playAgainBtn: $("#playAgainBtn"), newSetupBtn: $("#newSetupBtn"), confettiLayer: $("#confettiLayer")
+    playAgainBtn: $("#playAgainBtn"), newSetupBtn: $("#newSetupBtn"), confettiLayer: $("#confettiLayer"),
+    questionLoadStatus: $("#questionLoadStatus"), startGameBtn: $("#startGameBtn")
   };
 
   let teamDrafts = [];
@@ -237,7 +250,244 @@
     return null;
   }
 
-  function createGame() {
+  function setQuestionStatus(message, state = "") {
+    if (!els.questionLoadStatus) return;
+    els.questionLoadStatus.textContent = message;
+    els.questionLoadStatus.classList.remove("warning", "success");
+    if (state) els.questionLoadStatus.classList.add(state);
+  }
+
+  function decodeHtmlEntities(text) {
+    const el = document.createElement("textarea");
+    el.innerHTML = String(text || "");
+    return el.value.replace(/\s+/g, " ").trim();
+  }
+
+  function stripQuestionPrefix(text) {
+    return decodeHtmlEntities(text)
+      .replace(/^(Rodada técnica leve|Pergunta clássica|Questão gerada|Curiosidade geral|Pergunta|Rodada|Técnica leve)\s*#?\d*\s*[:\-]\s*/i, "")
+      .trim();
+  }
+
+  function normalizeText(text) {
+    return decodeHtmlEntities(text).replace(/\s+/g, " ").trim();
+  }
+
+  function mapDifficulty(raw) {
+    const value = String(raw || "").toLowerCase();
+    if (value === "easy" || value === "fácil") return "Fácil";
+    if (value === "medium" || value === "média" || value === "médio") return "Média";
+    if (value === "hard" || value === "avançada" || value === "avançado") return "Avançada";
+    return "Fácil";
+  }
+
+  function mapExternalCategory(category, source) {
+    const value = normalizeText(category).toLowerCase();
+    if (/geography|geografia/.test(value)) return "Geografia";
+    if (/history|história|historia/.test(value)) return "História";
+    if (/computer|gadget|technology|tecnologia|informática|informatica|computadores|dispositivos/.test(value)) return "Tecnologia";
+    if (/mathematics|math|matemática|matematica/.test(value)) return "Matemática e Raciocínio";
+    if (/science|nature|ciências|ciencias|natureza/.test(value)) return "Ciências";
+    if (/animal|animais/.test(value)) return "Animais e Natureza";
+    if (/sport|esporte/.test(value)) return "Esportes";
+    if (/book|art|literature|arte|literatura/.test(value)) return "Artes e Literatura";
+    if (/film|music|television|video game|cartoon|anime|entertainment|cultura pop/.test(value)) return "Cultura Pop";
+    if (/brasil|brazil/.test(value)) return "Brasil";
+    return source === "opentdb" ? "Conhecimentos Gerais" : "Conhecimentos Gerais";
+  }
+
+  function canonicalArea(area) {
+    const value = normalizeText(area).toLowerCase();
+    if (value === "cultura geral" || value === "conhecimentos gerais") return "Conhecimentos Gerais";
+    if (value === "cultura pop") return "Cultura Pop";
+    if (value === "animais e natureza") return "Animais e Natureza";
+    if (value === "artes e literatura") return "Artes e Literatura";
+    if (value === "matemática e raciocínio" || value === "matemática e raciocinio") return "Matemática e Raciocínio";
+    return normalizeText(area);
+  }
+
+  function isProbablyPortuguese(question, source) {
+    if (source === "tryvia" || source === "local") return true;
+    return PORTUGUESE_HINTS.test(question) && !ENGLISH_HINTS.test(question);
+  }
+
+  function normalizeExternalQuestion(raw, source, index = 0) {
+    if (!raw || raw.type !== "multiple") return null;
+    const question = stripQuestionPrefix(raw.question);
+    const answer = normalizeText(raw.correct_answer);
+    const wrongs = Array.isArray(raw.incorrect_answers) ? raw.incorrect_answers.map(normalizeText) : [];
+    const options = [answer, ...wrongs].filter(Boolean);
+    return {
+      id: `${source}-${Date.now()}-${index}`,
+      source,
+      area: canonicalArea(mapExternalCategory(raw.category, source)),
+      difficulty: mapDifficulty(raw.difficulty),
+      question,
+      options,
+      answer,
+      explanation: source === "tryvia"
+        ? "Pergunta carregada da Tryvia, uma API aberta de trivia em português."
+        : "Pergunta carregada de uma API aberta de trivia."
+    };
+  }
+
+  function normalizeLocalQuestion(raw, index = 0) {
+    return {
+      id: raw.id || `local-${index + 1}`,
+      source: "local",
+      area: canonicalArea(raw.area || "Conhecimentos Gerais"),
+      difficulty: mapDifficulty(raw.difficulty),
+      question: stripQuestionPrefix(raw.question),
+      options: (raw.options || []).map(normalizeText),
+      answer: normalizeText(raw.answer),
+      explanation: normalizeText(raw.explanation || "")
+    };
+  }
+
+  function validateQuestion(question) {
+    if (!question || !question.question || !question.answer || !question.area || !question.difficulty) return false;
+    if (!Array.isArray(question.options) || question.options.length !== 4) return false;
+    if (new Set(question.options.map(o => o.toLowerCase())).size !== 4) return false;
+    if (!question.options.includes(question.answer)) return false;
+    if (question.question.length < 10 || question.question.length > 180) return false;
+    if (question.options.some(option => option.length < 1 || option.length > 90)) return false;
+    if (FORBIDDEN_QUESTION_PATTERNS.some(pattern => pattern.test(question.question))) return false;
+    if (UNSTABLE_PATTERNS.some(pattern => pattern.test(question.question))) return false;
+    if (!isProbablyPortuguese(question.question, question.source)) return false;
+    if (/<[^>]+>/.test(question.question) || question.options.some(option => /<[^>]+>/.test(option))) return false;
+    return true;
+  }
+
+  function dedupeQuestions(questions) {
+    const seen = new Set();
+    return questions.filter(question => {
+      const key = question.question.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w]+/g, " ").trim();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  function limitMathShare(questions) {
+    const nonMath = questions.filter(q => q.area !== "Matemática e Raciocínio");
+    const mathLimit = Math.floor((nonMath.length / 95) * 5);
+    const math = questions.filter(q => q.area === "Matemática e Raciocínio").slice(0, Math.max(1, mathLimit));
+    return [...nonMath, ...math];
+  }
+
+  function buildBalancedQuestionQueue(questions) {
+    const clean = limitMathShare(dedupeQuestions(questions.filter(validateQuestion)));
+    const byArea = clean.reduce((acc, question) => {
+      (acc[question.area] ||= []).push(question);
+      return acc;
+    }, {});
+    Object.values(byArea).forEach(list => {
+      const order = { "Fácil": 0, "Média": 1, "Avançada": 2 };
+      list.sort((a, b) => order[a.difficulty] - order[b.difficulty]);
+    });
+    const result = [];
+    let lastArea = null;
+    while (Object.values(byArea).some(list => list.length)) {
+      const areas = Object.keys(byArea)
+        .filter(area => byArea[area].length && area !== lastArea)
+        .sort((a, b) => byArea[b].length - byArea[a].length);
+      const area = areas[0] || Object.keys(byArea).find(key => byArea[key].length);
+      if (!area) break;
+      result.push(byArea[area].shift());
+      lastArea = area;
+    }
+    return result;
+  }
+
+  function readQuestionCache() {
+    try {
+      const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
+      if (!cached || !Array.isArray(cached.questions)) return [];
+      if (Date.now() - cached.savedAt > 6 * 60 * 60 * 1000) return [];
+      return cached.questions.map((q, i) => ({ ...q, id: q.id || `cache-${i + 1}` }));
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveQuestionCache(questions) {
+    try {
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ savedAt: Date.now(), questions: questions.slice(0, 300) }));
+    } catch (e) {
+      console.warn("Não foi possível salvar cache de perguntas.", e);
+    }
+  }
+
+  async function requestToken(url, storageKey) {
+    const cached = JSON.parse(localStorage.getItem(storageKey) || "null");
+    if (cached?.token && Date.now() - cached.savedAt < 5 * 60 * 60 * 1000) return cached.token;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Falha ao pedir token: ${response.status}`);
+    const data = await response.json();
+    if (!data.token) throw new Error("Token ausente na resposta.");
+    localStorage.setItem(storageKey, JSON.stringify({ token: data.token, savedAt: Date.now() }));
+    return data.token;
+  }
+
+  async function fetchTryviaQuestions({ amount = 50 } = {}) {
+    const token = await requestToken("https://tryvia.ptr.red/api_token.php?command=request", TRYVIA_TOKEN_KEY);
+    const url = `https://tryvia.ptr.red/api.php?amount=${amount}&type=multiple&token=${encodeURIComponent(token)}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Tryvia HTTP ${response.status}`);
+    const data = await response.json();
+    if (Number(data.response_code) !== 0 || !Array.isArray(data.results)) throw new Error(`Tryvia response_code ${data.response_code}`);
+    return data.results.map((raw, index) => normalizeExternalQuestion(raw, "tryvia", index)).filter(validateQuestion);
+  }
+
+  async function fetchOpenTDBQuestions({ amount = 20 } = {}) {
+    const token = await requestToken("https://opentdb.com/api_token.php?command=request", OPENTDB_TOKEN_KEY);
+    const url = `https://opentdb.com/api.php?amount=${Math.min(50, amount)}&type=multiple&token=${encodeURIComponent(token)}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`OpenTDB HTTP ${response.status}`);
+    const data = await response.json();
+    if (Number(data.response_code) !== 0 || !Array.isArray(data.results)) throw new Error(`OpenTDB response_code ${data.response_code}`);
+    return data.results.map((raw, index) => normalizeExternalQuestion(raw, "opentdb", index)).filter(validateQuestion);
+  }
+
+  async function loadQuestions() {
+    const localQuestions = QUESTION_BANK.map(normalizeLocalQuestion).filter(validateQuestion);
+    const cached = readQuestionCache();
+    setQuestionStatus("Carregando perguntas...", "");
+    const slowMessage = setTimeout(() => setQuestionStatus("Buscando perguntas em português...", ""), 1800);
+    try {
+      setQuestionStatus("Buscando perguntas em português na Tryvia...", "");
+      const tryvia = await fetchTryviaQuestions({ amount: 50 });
+      let external = tryvia;
+      if (external.length < 20) {
+        try {
+          external = [...external, ...(await fetchOpenTDBQuestions({ amount: 20 }))];
+        } catch (e) {
+          console.warn("OpenTDB indisponível ou sem perguntas adequadas.", e);
+        }
+      }
+      if (external.length) {
+        saveQuestionCache(external);
+        const technical = localQuestions.filter(q => ["Nutrição", "Odontologia", "Enfermagem", "Tecnologia"].includes(q.area)).slice(0, 80);
+        const queue = buildBalancedQuestionQueue([...external, ...technical, ...localQuestions]);
+        clearTimeout(slowMessage);
+        setQuestionStatus(`Perguntas online carregadas: ${external.length} externas + fallback local.`, "success");
+        return queue;
+      }
+      throw new Error("Nenhuma pergunta externa passou nos filtros.");
+    } catch (error) {
+      clearTimeout(slowMessage);
+      console.warn("Não foi possível carregar perguntas online.", error);
+      if (cached.length) {
+        const queue = buildBalancedQuestionQueue([...cached, ...localQuestions]);
+        setQuestionStatus("Não foi possível carregar perguntas online. Usando cache e perguntas locais.", "warning");
+        return queue;
+      }
+      setQuestionStatus("Modo offline: usando perguntas locais.", "warning");
+      return buildBalancedQuestionQueue(localQuestions);
+    }
+  }
+
+  function createGame(questionBank = QUESTION_BANK.map(normalizeLocalQuestion)) {
     const targetScore = clampNumber(els.targetScore.value, 50, 1);
     const baseTime = clampNumber(els.baseTime.value, 60, 15);
     const teamHelp = clampNumber(els.teamHelpCount.value, 3, 0);
@@ -253,19 +503,24 @@
       currentTeamIndex: 0, round: 1, paused: false,
       helpUsedThisTurn: false, usedHelpType: null, answered: false,
       remaining: baseTime, totalForTimer: baseTime,
-      questions: shuffle(QUESTION_BANK), currentQuestion: null, currentOptions: [],
+      questions: shuffle(questionBank), allQuestions: questionBank, currentQuestion: null, currentOptions: [],
       lastArea: null, lastDifficulty: null, lastTickSecond: null
     };
     localStorage.setItem("batalhaPerguntasSetup", JSON.stringify({ teams: teamDrafts, targetScore, baseTime, teamHelp, googleHelp, timeHelp }));
   }
 
-  function startGame() {
+  async function startGame() {
     const error = validateSetup();
     if (error) {
       alert(error);
       return;
     }
-    createGame();
+    els.startGameBtn.disabled = true;
+    els.startGameBtn.textContent = "Carregando...";
+    const questionBank = await loadQuestions();
+    createGame(questionBank);
+    els.startGameBtn.disabled = false;
+    els.startGameBtn.textContent = "Começar jogo";
     showView(els.gameView);
     nextQuestion();
   }
@@ -280,14 +535,14 @@
 
   function drawQuestion() {
     if (!game.questions.length) {
-      game.questions = shuffle(QUESTION_BANK);
+      game.questions = shuffle(game.allQuestions || QUESTION_BANK.map(normalizeLocalQuestion));
     }
     let candidates = game.questions
       .map((q, index) => ({ q, index }))
       .filter(({ q }) => q.area !== game.lastArea);
 
     if (!candidates.length) {
-      game.questions = shuffle(QUESTION_BANK);
+      game.questions = shuffle(game.allQuestions || QUESTION_BANK.map(normalizeLocalQuestion));
       candidates = game.questions
         .map((q, index) => ({ q, index }))
         .filter(({ q }) => q.area !== game.lastArea);
@@ -624,8 +879,14 @@
     });
     els.rulesBtn.addEventListener("click", () => els.rulesDialog.showModal());
     els.closeRulesBtn.addEventListener("click", () => els.rulesDialog.close());
-    els.playAgainBtn.addEventListener("click", () => { createGame(); showView(els.gameView); nextQuestion(); });
+    els.playAgainBtn.addEventListener("click", () => { createGame(game?.allQuestions || QUESTION_BANK.map(normalizeLocalQuestion)); showView(els.gameView); nextQuestion(); });
     els.newSetupBtn.addEventListener("click", () => resetAll(true));
+    els.clearCacheBtn.addEventListener("click", () => {
+      localStorage.removeItem(CACHE_KEY);
+      localStorage.removeItem(TRYVIA_TOKEN_KEY);
+      localStorage.removeItem(OPENTDB_TOKEN_KEY);
+      setQuestionStatus("Cache de perguntas limpo. A próxima partida buscará perguntas online novamente.", "success");
+    });
     window.addEventListener("keydown", (e) => {
       if (!game || !els.gameView.classList.contains("active")) return;
       if (["1", "2", "3", "4"].includes(e.key) && !game.answered && !game.paused) {

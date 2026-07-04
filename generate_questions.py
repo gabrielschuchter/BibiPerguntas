@@ -77,6 +77,7 @@ class Builder:
         self.items.append(
             {
                 "id": f"Q{len(self.items) + 1:04d}",
+                "source": "local",
                 "area": area,
                 "difficulty": self.difficulty_for_area(area),
                 "question": question,
