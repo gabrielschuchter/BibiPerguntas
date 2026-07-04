@@ -3,7 +3,6 @@
 
   const $ = (sel) => document.querySelector(sel);
   const $$ = (sel) => Array.from(document.querySelectorAll(sel));
-  const QUESTION_BANK = Array.isArray(window.QUESTION_BANK) ? window.QUESTION_BANK : [];
   const COLORS = ["#7dd3fc", "#a78bfa", "#34d399", "#fbbf24", "#fb7185", "#f472b6", "#38bdf8", "#c4b5fd"];
   const CIRC = 2 * Math.PI * 52;
   const CACHE_KEY = "batalhaPerguntasQuestionCache.v1";
@@ -246,7 +245,6 @@
       const blank = team.members.findIndex(m => !m.trim());
       if (blank !== -1) return `${team.name}: preencha o nome do integrante ${blank + 1}.`;
     }
-    if (!QUESTION_BANK.length) return "Nenhuma pergunta foi carregada.";
     return null;
   }
 
@@ -307,7 +305,7 @@
   }
 
   function isProbablyPortuguese(question, source) {
-    if (source === "tryvia" || source === "local") return true;
+    if (source === "tryvia") return true;
     return PORTUGUESE_HINTS.test(question) && !ENGLISH_HINTS.test(question);
   }
 
@@ -328,19 +326,6 @@
       explanation: source === "tryvia"
         ? "Pergunta carregada da Tryvia, uma API aberta de trivia em português."
         : "Pergunta carregada de uma API aberta de trivia."
-    };
-  }
-
-  function normalizeLocalQuestion(raw, index = 0) {
-    return {
-      id: raw.id || `local-${index + 1}`,
-      source: "local",
-      area: canonicalArea(raw.area || "Conhecimentos Gerais"),
-      difficulty: mapDifficulty(raw.difficulty),
-      question: stripQuestionPrefix(raw.question),
-      options: (raw.options || []).map(normalizeText),
-      answer: normalizeText(raw.answer),
-      explanation: normalizeText(raw.explanation || "")
     };
   }
 
@@ -450,16 +435,20 @@
   }
 
   async function loadQuestions() {
-    const localQuestions = QUESTION_BANK.map(normalizeLocalQuestion).filter(validateQuestion);
     const cached = readQuestionCache();
     setQuestionStatus("Carregando perguntas...", "");
     const slowMessage = setTimeout(() => setQuestionStatus("Buscando perguntas em português...", ""), 1800);
     try {
       setQuestionStatus("Buscando perguntas em português na Tryvia...", "");
-      const tryvia = await fetchTryviaQuestions({ amount: 50 });
-      let external = tryvia;
+      let external = [];
+      try {
+        external = await fetchTryviaQuestions({ amount: 50 });
+      } catch (e) {
+        console.warn("Tryvia indisponível ou sem perguntas adequadas.", e);
+      }
       if (external.length < 20) {
         try {
+          setQuestionStatus("Tentando fonte secundária de trivia...", "");
           external = [...external, ...(await fetchOpenTDBQuestions({ amount: 20 }))];
         } catch (e) {
           console.warn("OpenTDB indisponível ou sem perguntas adequadas.", e);
@@ -467,10 +456,9 @@
       }
       if (external.length) {
         saveQuestionCache(external);
-        const technical = localQuestions.filter(q => ["Nutrição", "Odontologia", "Enfermagem", "Tecnologia"].includes(q.area)).slice(0, 80);
-        const queue = buildBalancedQuestionQueue([...external, ...technical, ...localQuestions]);
+        const queue = buildBalancedQuestionQueue(external);
         clearTimeout(slowMessage);
-        setQuestionStatus(`Perguntas online carregadas: ${external.length} externas + fallback local.`, "success");
+        setQuestionStatus(`Perguntas online carregadas: ${external.length} aprovadas nos filtros.`, "success");
         return queue;
       }
       throw new Error("Nenhuma pergunta externa passou nos filtros.");
@@ -478,16 +466,16 @@
       clearTimeout(slowMessage);
       console.warn("Não foi possível carregar perguntas online.", error);
       if (cached.length) {
-        const queue = buildBalancedQuestionQueue([...cached, ...localQuestions]);
-        setQuestionStatus("Não foi possível carregar perguntas online. Usando cache e perguntas locais.", "warning");
+        const queue = buildBalancedQuestionQueue(cached);
+        setQuestionStatus("Não foi possível carregar novas perguntas online. Usando cache externo validado.", "warning");
         return queue;
       }
-      setQuestionStatus("Modo offline: usando perguntas locais.", "warning");
-      return buildBalancedQuestionQueue(localQuestions);
+      setQuestionStatus("Não foi possível carregar perguntas online. Verifique a conexão e tente novamente.", "warning");
+      return [];
     }
   }
 
-  function createGame(questionBank = QUESTION_BANK.map(normalizeLocalQuestion)) {
+  function createGame(questionBank) {
     const targetScore = clampNumber(els.targetScore.value, 50, 1);
     const baseTime = clampNumber(els.baseTime.value, 60, 15);
     const teamHelp = clampNumber(els.teamHelpCount.value, 3, 0);
@@ -503,7 +491,7 @@
       currentTeamIndex: 0, round: 1, paused: false,
       helpUsedThisTurn: false, usedHelpType: null, answered: false,
       remaining: baseTime, totalForTimer: baseTime,
-      questions: shuffle(questionBank), allQuestions: questionBank, currentQuestion: null, currentOptions: [],
+      questions: shuffle(questionBank || []), allQuestions: questionBank || [], currentQuestion: null, currentOptions: [],
       lastArea: null, lastDifficulty: null, lastTickSecond: null
     };
     localStorage.setItem("batalhaPerguntasSetup", JSON.stringify({ teams: teamDrafts, targetScore, baseTime, teamHelp, googleHelp, timeHelp }));
@@ -518,6 +506,11 @@
     els.startGameBtn.disabled = true;
     els.startGameBtn.textContent = "Carregando...";
     const questionBank = await loadQuestions();
+    if (!questionBank.length) {
+      els.startGameBtn.disabled = false;
+      els.startGameBtn.textContent = "Começar jogo";
+      return;
+    }
     createGame(questionBank);
     els.startGameBtn.disabled = false;
     els.startGameBtn.textContent = "Começar jogo";
@@ -535,14 +528,14 @@
 
   function drawQuestion() {
     if (!game.questions.length) {
-      game.questions = shuffle(game.allQuestions || QUESTION_BANK.map(normalizeLocalQuestion));
+      game.questions = shuffle(game.allQuestions || []);
     }
     let candidates = game.questions
       .map((q, index) => ({ q, index }))
       .filter(({ q }) => q.area !== game.lastArea);
 
     if (!candidates.length) {
-      game.questions = shuffle(game.allQuestions || QUESTION_BANK.map(normalizeLocalQuestion));
+      game.questions = shuffle(game.allQuestions || []);
       candidates = game.questions
         .map((q, index) => ({ q, index }))
         .filter(({ q }) => q.area !== game.lastArea);
@@ -879,7 +872,7 @@
     });
     els.rulesBtn.addEventListener("click", () => els.rulesDialog.showModal());
     els.closeRulesBtn.addEventListener("click", () => els.rulesDialog.close());
-    els.playAgainBtn.addEventListener("click", () => { createGame(game?.allQuestions || QUESTION_BANK.map(normalizeLocalQuestion)); showView(els.gameView); nextQuestion(); });
+    els.playAgainBtn.addEventListener("click", () => { createGame(game?.allQuestions || []); showView(els.gameView); nextQuestion(); });
     els.newSetupBtn.addEventListener("click", () => resetAll(true));
     els.clearCacheBtn.addEventListener("click", () => {
       localStorage.removeItem(CACHE_KEY);
@@ -902,7 +895,7 @@
   }
 
   function init() {
-    els.questionCountText.textContent = `${QUESTION_BANK.length.toLocaleString("pt-BR")} perguntas carregadas`;
+    els.questionCountText.textContent = "Perguntas online";
     els.timerProgress.style.strokeDasharray = `${CIRC}`;
     if (!restoreSetup()) buildTeams(3);
     bindEvents();

@@ -89,9 +89,9 @@
 
           <div class="start-card">
             <div>
-              <strong id="questionCountText">500 perguntas carregadas</strong>
-              <span>15 áreas equilibradas, com conhecimentos gerais, cultura pop, Brasil, esportes e temas técnicos leves.</span>
-              <small class="question-load-status" id="questionLoadStatus" aria-live="polite">Ao começar, o jogo tenta buscar perguntas online em português e usa fallback local se necessário.</small>
+              <strong id="questionCountText">Perguntas online</strong>
+              <span>O jogo busca perguntas da Tryvia e, se necessário, da OpenTDB. Só entram perguntas aprovadas nos filtros.</span>
+              <small class="question-load-status" id="questionLoadStatus" aria-live="polite">Ao começar, o jogo busca perguntas online em português. Sem internet e sem cache validado, a partida não inicia.</small>
             </div>
             <button class="primary-btn" id="startGameBtn" type="submit">Começar jogo</button>
           </div>
@@ -198,11 +198,10 @@
       <h3>7. Vitória</h3>
       <p>Vence a primeira equipe que atingir 50 acertos, ou a pontuação de vitória definida antes de começar o jogo.</p>
       <h3>8. Clima do jogo</h3>
-      <p>As perguntas misturam conhecimentos gerais e temas técnicos leves de nutrição, odontologia, enfermagem e tecnologia. A ideia é criar momentos divertidos quando alguém cai em uma área fora da sua zona de conforto.</p>
+      <p>As perguntas vêm de APIs abertas de trivia e passam por filtros de qualidade antes de entrar no jogo. Perguntas booleanas, malformadas ou fora do padrão são descartadas.</p>
     </div>
   </dialog>
 
-  <script src="questions.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

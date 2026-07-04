@@ -1,10 +1,12 @@
 # Fontes de perguntas
 
-O jogo usa três fontes normalizadas em tempo de execução:
+O jogo usa apenas fontes online abertas e cache local de perguntas externas já validadas:
 
-- `tryvia`: fonte online principal, em português, compatível com o formato da Open Trivia Database.
-- `opentdb`: fonte online secundária. Como a maior parte do conteúdo está em inglês, o app só aceita perguntas que passem por filtros de idioma e qualidade.
-- `local`: banco embarcado em `questions.json` e `questions.js`, usado para fallback offline e para manter perguntas técnicas leves de Nutrição, Odontologia, Enfermagem e Tecnologia.
+- `tryvia`: fonte principal, em português, compatível com o formato da Open Trivia Database.
+- `opentdb`: fonte secundária. Como a maior parte do conteúdo está em inglês, o app só aceita perguntas que passem por filtros de idioma e qualidade.
+- cache em `localStorage`: guarda perguntas externas válidas para reutilização se uma nova chamada falhar.
+
+Não há banco local de perguntas embarcado no jogo.
 
 ## Tryvia
 
@@ -14,7 +16,7 @@ Endpoints estudados:
 - `https://tryvia.ptr.red/api_token.php?command=request`
 - `https://tryvia.ptr.red/api.php?amount={quantidade}&type=multiple&token={token}`
 
-O app pede token de sessão e busca perguntas `multiple`. Se a chamada falhar ou retornar poucas perguntas válidas, o jogo continua com cache ou banco local.
+O app pede token de sessão e busca perguntas `multiple`.
 
 ## Open Trivia DB
 
@@ -33,7 +35,7 @@ Limites considerados:
 
 ## Qualidade
 
-Todas as fontes passam por normalização para:
+Todas as perguntas aceitas passam por normalização para:
 
 - `id`
 - `source`

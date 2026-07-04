@@ -33,97 +33,53 @@ O projeto funciona como site estático.
 - `index.html`: estrutura das telas, regras, setup, jogo e vitória.
 - `style.css`: layout responsivo, visual de game show, animações e estados do timer.
 - `app.js`: lógica de equipes, rodadas, sorteio, timer, sons, ajudas e pontuação.
-- `questions.json`: base editável em JSON puro.
-- `questions.js`: mesma base em JavaScript para funcionar abrindo `index.html` direto.
-- `generate_questions.py`: gera a base original equilibrada.
-- `scripts/validate-questions.js`: valida qualidade, distribuição e sincronização da base local.
+- `scripts/validate-questions.js`: valida que o app não usa banco local e mantém a camada online obrigatória.
 - `data/question-sources.md`: notas sobre Tryvia, OpenTDB e filtros de qualidade.
 
-## Banco de perguntas
+## Fontes de perguntas
 
-O jogo tenta carregar perguntas online da Tryvia API, uma API aberta de trivia em português compatível com Open Trivia Database. Se a Tryvia falhar, o app pode tentar OpenTDB como fonte secundária, mas rejeita perguntas em inglês quando não há normalização segura. Se as APIs falharem ou não houver internet, o jogo usa automaticamente o banco local.
+O jogo usa apenas perguntas vindas de APIs abertas:
 
-O banco local tem **500 perguntas originais em português brasileiro**. Ele serve como fallback offline e complementa o jogo com perguntas técnicas leves de Nutrição, Odontologia, Enfermagem e Tecnologia. O projeto não copia bancos proprietários de programas de TV.
+- Tryvia API como fonte principal em português.
+- Open Trivia DB como fonte secundária, apenas quando as perguntas passam pelos filtros de idioma e qualidade.
+- Cache em `localStorage` com perguntas externas já validadas.
 
-Categorias:
+Não existe banco local de perguntas embarcado. Se não houver internet e não existir cache externo validado, a partida não inicia e a interface mostra uma mensagem amigável.
 
-- Geografia
-- História
-- Ciências
-- Cultura geral
-- Cultura pop
-- Esportes
-- Brasil
-- Animais e natureza
-- Língua portuguesa
-- Artes e literatura
-- Tecnologia
-- Nutrição
-- Odontologia
-- Enfermagem
-- Matemática e raciocínio
-
-Distribuição:
-
-- 34 perguntas em cada categoria principal.
-- 24 perguntas em Matemática e raciocínio.
-- Matemática fica abaixo de 5% da base.
-- Dificuldades: `Fácil`, `Média` e `Avançada`.
-
-## Como editar perguntas
-
-Cada pergunta deve seguir este formato:
+As perguntas são normalizadas internamente neste formato:
 
 ```json
 {
-  "id": "Q0001",
-  "source": "local",
-  "area": "Geografia",
+  "id": "tryvia-...",
+  "source": "tryvia",
+  "area": "Conhecimentos Gerais",
   "difficulty": "Fácil",
-  "question": "Qual país tem o formato parecido com uma bota?",
-  "options": ["Itália", "Canadá", "Japão", "Egito"],
-  "answer": "Itália",
-  "explanation": "A Itália é frequentemente associada ao formato de uma bota no mapa."
+  "question": "Pergunta limpa",
+  "options": ["A", "B", "C", "D"],
+  "answer": "A",
+  "explanation": "Origem da pergunta."
 }
 ```
 
-Regras importantes:
-
-- `id` único e sequencial.
-- `source` deve ser `local` no banco embarcado.
-- `area` deve ser uma das 15 categorias.
-- `difficulty` deve ser `Fácil`, `Média` ou `Avançada`.
-- `options` deve ter exatamente 4 alternativas.
-- `answer` precisa bater exatamente com uma alternativa.
-- `question` deve conter apenas a pergunta limpa, sem prefixos, numeração ou marcadores.
-- Mantenha `questions.json` e `questions.js` sincronizados.
-
-Para regenerar a base completa:
-
-```bash
-python generate_questions.py
-```
-
-Para validar a base:
+Para validar a arquitetura:
 
 ```bash
 node scripts/validate-questions.js
 ```
 
-O validador não exige dependências externas. Ele checa campos obrigatórios, sincronização entre `questions.json` e `questions.js`, duplicatas, alternativas, prefixos proibidos, inglês provável e matemática acima de 5%.
+O validador não exige dependências externas. Ele checa se não há banco local, se `index.html` não carrega `questions.js` e se `app.js` mantém endpoints, normalização, filtros e cache externo validado.
 
 ## Fontes online e cache
 
 Fluxo ao iniciar uma partida:
 
-1. Carregar o banco local.
-2. Pedir token da Tryvia.
-3. Buscar perguntas `type=multiple`.
-4. Normalizar, decodificar HTML entities, validar e filtrar perguntas ruins.
-5. Se necessário, tentar OpenTDB com os mesmos filtros.
-6. Misturar perguntas externas com perguntas locais técnicas leves.
-7. Salvar perguntas externas válidas em `localStorage`.
-8. Se a API falhar, usar cache; se o cache também falhar, usar banco local.
+1. Pedir token da Tryvia.
+2. Buscar perguntas `type=multiple`.
+3. Normalizar, decodificar HTML entities, validar e filtrar perguntas ruins.
+4. Se necessário, tentar OpenTDB com os mesmos filtros.
+5. Salvar perguntas externas válidas em `localStorage`.
+6. Se uma nova busca falhar, usar apenas cache externo validado.
+7. Se não houver API nem cache, não iniciar a partida.
 
 Existe um botão **Limpar cache** no topo da interface para forçar uma nova busca online na próxima partida.
 
