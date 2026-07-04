@@ -1,131 +1,142 @@
-# Batalha de Perguntas — jogo local entre amigos
+# Batalha de Perguntas
 
-Aplicativo estático, feito para rodar localmente no navegador, sem servidor, login ou banco de dados externo.
+Jogo local de perguntas e respostas por equipes, feito em HTML, CSS e JavaScript puro. Não usa backend, framework nem build obrigatório.
 
-## Como usar
+## Como rodar localmente
 
-1. Extraia a pasta do ZIP.
-2. Abra o arquivo `index.html` no navegador.
-3. Cadastre as equipes, cores e integrantes.
+Opção mais simples:
+
+1. Baixe ou clone o projeto.
+2. Abra `index.html` no navegador.
+3. Cadastre equipes, cores e jogadores.
 4. Clique em **Começar jogo**.
 
-Também é possível rodar com um servidor local simples:
+Também é possível usar um servidor estático local:
 
 ```bash
 python -m http.server 8000
 ```
 
-Depois, abra `http://localhost:8000` no navegador.
+Depois abra `http://localhost:8000`.
 
-## Arquivos principais
+## Deploy no Vercel
 
-- `index.html`: estrutura da aplicação.
-- `style.css`: visual responsivo, animações, efeitos e layout.
-- `app.js`: lógica do jogo, timer, ajudas, rodadas, placar e vitória.
-- `questions.js`: banco de perguntas carregado diretamente pelo navegador.
-- `questions.json`: banco de perguntas em JSON puro, para edição/revisão.
-- `generate_questions.py`: script usado para gerar a base inicial de perguntas.
+O projeto funciona como site estático.
 
-## Funcionalidades incluídas
+1. Importe o repositório no Vercel.
+2. Framework preset: **Other**.
+3. Build command: deixe vazio.
+4. Output directory: deixe vazio ou use a raiz do projeto.
 
-- Cadastro livre de equipes.
-- Cadastro de nome, cor e quantidade de integrantes por equipe.
-- Validação da quantidade de integrantes.
-- Rodízio automático entre equipes.
-- Rodízio automático de integrantes dentro de cada equipe.
-- Perguntas de múltipla escolha.
-- Sorteio aleatório de perguntas.
-- Embaralhamento das alternativas a cada rodada.
-- Identificação visual de área e dificuldade.
-- Timer visual circular.
-- Tempo padrão de 60 segundos por pergunta.
-- Ajuda de consulta à equipe.
-- Ajuda de pesquisa no Google.
-- Ajuda de bônus de +1 minuto.
-- Regra de apenas 1 ajuda por pergunta.
-- Limite configurável de ajudas por equipe.
-- Pontuação automática.
-- Vitória por pontuação total, padrão de 50 acertos.
-- Tela de regras legível.
-- Sons gerados no navegador para acerto, erro, contagem final e vitória.
-- Confetes e balões no acerto/vitória.
-- Botão de pausa.
-- Layout responsivo para celular, tablet e desktop.
-- Persistência local da última configuração via `localStorage`.
+## Estrutura
+
+- `index.html`: estrutura das telas, regras, setup, jogo e vitória.
+- `style.css`: layout responsivo, visual de game show, animações e estados do timer.
+- `app.js`: lógica de equipes, rodadas, sorteio, timer, sons, ajudas e pontuação.
+- `questions.json`: base editável em JSON puro.
+- `questions.js`: mesma base em JavaScript para funcionar abrindo `index.html` direto.
+- `generate_questions.py`: gera a base original equilibrada.
+- `validate_questions.py`: valida qualidade, distribuição e sincronização da base.
 
 ## Banco de perguntas
 
-A base inicial contém **3.200 perguntas**.
+A base atual tem **3.010 perguntas originais em português brasileiro**. O estilo é inspirado em jogos clássicos de perguntas de auditório, sem copiar literalmente perguntas proprietárias de programas, sites ou bancos fechados.
 
-Áreas incluídas:
+Categorias:
 
-- Conhecimentos gerais
-- Raciocínio
 - Geografia
+- História
 - Ciências
-- Astronomia
-- Biologia
-- História e cultura
+- Cultura geral
+- Cultura pop
+- Esportes
+- Brasil
+- Animais e natureza
 - Língua portuguesa
+- Artes e literatura
+- Tecnologia
 - Nutrição
 - Odontologia
 - Enfermagem
-- Tecnologia
+- Matemática e raciocínio
 
-Níveis incluídos:
+Distribuição:
 
-- Fácil
-- Médio
-- Avançado
-
-Observação: a base é original e não copia literalmente perguntas proprietárias de programas ou jogos televisivos. O formato foi inspirado em jogos de quiz de múltipla escolha, mas as perguntas foram estruturadas para uso local e edição livre.
+- 205 perguntas em cada categoria principal.
+- 140 perguntas em Matemática e raciocínio.
+- Matemática fica abaixo de 5% da base.
+- Dificuldades: `Fácil`, `Média` e `Avançada`.
 
 ## Como editar perguntas
 
-Edite `questions.json` e mantenha este formato:
+Cada pergunta deve seguir este formato:
 
 ```json
 {
   "id": "Q0001",
-  "area": "Tecnologia",
+  "area": "Geografia",
   "difficulty": "Fácil",
-  "question": "Na tecnologia, o que significa HTTPS?",
-  "options": [
-    "HyperText Transfer Protocol Secure",
-    "High Transfer Text Public System",
-    "Home Tool Transfer Page Service",
-    "Host Text Terminal Private Signal"
-  ],
-  "answer": "HyperText Transfer Protocol Secure",
-  "explanation": "HTTPS significa HyperText Transfer Protocol Secure."
+  "question": "Qual país tem o formato parecido com uma bota?",
+  "options": ["Itália", "Canadá", "Japão", "Egito"],
+  "answer": "Itália",
+  "explanation": "A Itália é frequentemente associada ao formato de uma bota no mapa."
 }
 ```
 
-Para o app abrir diretamente por duplo clique, ele lê `questions.js`, não `questions.json`, porque muitos navegadores bloqueiam `fetch()` de arquivos locais por segurança. Portanto, após editar o JSON, você pode regenerar `questions.js` com:
+Regras importantes:
+
+- `id` único e sequencial.
+- `area` deve ser uma das 15 categorias.
+- `difficulty` deve ser `Fácil`, `Média` ou `Avançada`.
+- `options` deve ter exatamente 4 alternativas.
+- `answer` precisa bater exatamente com uma alternativa.
+- `question` deve conter apenas a pergunta limpa, sem prefixos, numeração ou marcadores.
+- Mantenha `questions.json` e `questions.js` sincronizados.
+
+Para regenerar a base completa:
 
 ```bash
-python - <<'PY'
-import json
-from pathlib import Path
-qs = json.loads(Path('questions.json').read_text(encoding='utf-8'))
-Path('questions.js').write_text('window.QUESTION_BANK = ' + json.dumps(qs, ensure_ascii=False) + ';\n', encoding='utf-8')
-PY
+python generate_questions.py
 ```
 
-## Personalizações rápidas
+Para validar a base:
 
-No início do jogo, você pode alterar:
+```bash
+python validate_questions.py
+```
 
-- Pontos para vencer.
-- Tempo por pergunta.
-- Número de consultas à equipe.
-- Número de pesquisas no Google.
-- Número de bônus de +1 minuto.
-- Quantidade de equipes.
-- Cores das equipes.
-- Nomes dos integrantes.
+Se o Python não estiver no PATH, use qualquer Python 3 local. Os scripts não exigem dependências externas.
 
-## Atalhos durante o jogo
+## Sorteio das perguntas
 
-- Teclas `1`, `2`, `3`, `4`: respondem as alternativas.
+O app embaralha a base e remove da fila cada pergunta sorteada. Quando a fila acaba, ela é embaralhada novamente.
+
+Regra principal: a próxima pergunta nunca repete a mesma `area` da pergunta imediatamente anterior. A lógica filtra candidatas com `area !== lastArea`, inclusive depois de reembaralhar a base. A repetição só é permitida se não houver alternativa possível.
+
+O jogo também tenta evitar repetir a mesma dificuldade em sequência quando há candidatas disponíveis.
+
+## Timer e sons
+
+Tempo padrão: 60 segundos.
+
+- 60s a 31s: estado normal, visual calmo.
+- 30s a 16s: atenção, com alerta visual e som discreto em intervalos.
+- 15s a 6s: perigo, pulso mais forte e som mais frequente.
+- 5s a 1s: crítico, número destacado, brilho e som mais intenso.
+
+Os sons são gerados pela Web Audio API, sem arquivos externos. O áudio só é ativado depois de interação do usuário, respeitando as restrições dos navegadores.
+
+## Ajudas
+
+Cada equipe tem uma quantidade configurável de:
+
+- Consultar equipe: permite conversa rápida com o time.
+- Pesquisar: abre uma busca no Google com a pergunta.
+- +1 minuto: adiciona 60 segundos ao timer atual.
+
+Só é permitida uma ajuda por pergunta. Depois de usar uma ajuda, as outras ficam bloqueadas até a próxima rodada.
+
+## Atalhos
+
+- `1`, `2`, `3`, `4`: respondem as alternativas A, B, C e D.
 - Barra de espaço: avança para a próxima rodada depois de responder.

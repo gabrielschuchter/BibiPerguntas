@@ -17,7 +17,7 @@
     turnStrip: $("#turnStrip"), areaBadge: $("#areaBadge"), difficultyBadge: $("#difficultyBadge"), questionId: $("#questionId"),
     gameTitle: $("#gameTitle"), answers: $("#answers"), feedback: $("#feedback"),
     teamHelpBtn: $("#teamHelpBtn"), googleHelpBtn: $("#googleHelpBtn"), timeHelpBtn: $("#timeHelpBtn"),
-    timerText: $("#timerText"), timerProgress: $("#timerProgress"), skipBtn: $("#skipBtn"), nextBtn: $("#nextBtn"),
+    timerWrap: $("#timerWrap"), timerLabel: $("#timerLabel"), timerText: $("#timerText"), timerProgress: $("#timerProgress"), skipBtn: $("#skipBtn"), nextBtn: $("#nextBtn"),
     pauseBtn: $("#pauseBtn"), resetBtn: $("#resetBtn"), rulesBtn: $("#rulesBtn"), closeRulesBtn: $("#closeRulesBtn"),
     rulesDialog: $("#rulesDialog"), winnerTitle: $("#winnerTitle"), winnerText: $("#winnerText"),
     playAgainBtn: $("#playAgainBtn"), newSetupBtn: $("#newSetupBtn"), confettiLayer: $("#confettiLayer")
@@ -27,6 +27,7 @@
   let game = null;
   let timerHandle = null;
   let audioCtx = null;
+  let audioReady = false;
 
   function shuffle(arr) {
     const copy = [...arr];
@@ -49,6 +50,7 @@
   }
 
   function initAudio() {
+    if (!audioReady) return;
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   }
 
@@ -70,7 +72,9 @@
 
   function playSound(kind) {
     try {
+      if (!audioReady) return;
       initAudio();
+      if (!audioCtx) return;
       if (audioCtx.state === "suspended") audioCtx.resume();
       if (kind === "correct") {
         tone(523.25, 0.16, "sine", 0.05, 0);
@@ -81,6 +85,13 @@
         tone(146.83, 0.26, "sawtooth", 0.03, 0.18);
       } else if (kind === "tick") {
         tone(880, 0.06, "square", 0.018, 0);
+      } else if (kind === "tick-warning") {
+        tone(620, 0.055, "triangle", 0.014, 0);
+      } else if (kind === "tick-danger") {
+        tone(760, 0.065, "square", 0.018, 0);
+      } else if (kind === "tick-critical") {
+        tone(980, 0.075, "square", 0.022, 0);
+        tone(1220, 0.055, "triangle", 0.012, 0.055);
       } else if (kind === "win") {
         [523, 659, 784, 1046].forEach((f, i) => tone(f, 0.22, "triangle", 0.05, i * 0.13));
       }
@@ -210,9 +221,10 @@
     game = {
       targetScore, baseTime, teams,
       currentTeamIndex: 0, round: 1, paused: false,
-      helpUsedThisTurn: false, answered: false,
+      helpUsedThisTurn: false, usedHelpType: null, answered: false,
       remaining: baseTime, totalForTimer: baseTime,
-      questions: shuffle(QUESTION_BANK), questionIndex: 0, currentQuestion: null, currentOptions: []
+      questions: shuffle(QUESTION_BANK), currentQuestion: null, currentOptions: [],
+      lastArea: null, lastDifficulty: null, lastTickSecond: null
     };
     localStorage.setItem("batalhaPerguntasSetup", JSON.stringify({ teams: teamDrafts, targetScore, baseTime, teamHelp, googleHelp, timeHelp }));
   }
@@ -237,26 +249,48 @@
   }
 
   function drawQuestion() {
-    if (game.questionIndex >= game.questions.length) {
+    if (!game.questions.length) {
       game.questions = shuffle(QUESTION_BANK);
-      game.questionIndex = 0;
     }
-    const q = game.questions[game.questionIndex++];
+    let candidates = game.questions
+      .map((q, index) => ({ q, index }))
+      .filter(({ q }) => q.area !== game.lastArea);
+
+    if (!candidates.length) {
+      game.questions = shuffle(QUESTION_BANK);
+      candidates = game.questions
+        .map((q, index) => ({ q, index }))
+        .filter(({ q }) => q.area !== game.lastArea);
+    }
+
+    if (!candidates.length) {
+      candidates = game.questions.map((q, index) => ({ q, index }));
+    }
+
+    const diffCandidates = candidates.filter(({ q }) => q.difficulty !== game.lastDifficulty);
+    if (diffCandidates.length) candidates = diffCandidates;
+
+    const picked = candidates[Math.floor(Math.random() * candidates.length)];
+    const q = game.questions.splice(picked.index, 1)[0];
     game.currentQuestion = q;
     game.currentOptions = shuffle(q.options || []);
+    game.lastArea = q.area;
+    game.lastDifficulty = q.difficulty;
+    game.lastTickSecond = null;
   }
 
   function nextQuestion() {
     clearInterval(timerHandle);
     game.answered = false;
     game.helpUsedThisTurn = false;
+    game.usedHelpType = null;
     game.remaining = game.baseTime;
     game.totalForTimer = game.baseTime;
     game.paused = false;
     els.pauseBtn.textContent = "Pausar";
     els.feedback.innerHTML = "";
     els.nextBtn.disabled = true;
-    els.questionPanel.classList.remove("correct", "wrong");
+    els.questionPanel.classList.remove("correct", "wrong", "timer-normal", "timer-warning", "timer-danger", "timer-critical");
     drawQuestion();
     renderQuestion();
     renderScoreboard();
@@ -275,11 +309,12 @@
     els.questionId.textContent = q.id;
     els.gameTitle.textContent = q.question;
     els.answers.innerHTML = "";
-    game.currentOptions.forEach(option => {
+    game.currentOptions.forEach((option, index) => {
       const btn = document.createElement("button");
       btn.className = "answer-btn";
       btn.type = "button";
-      btn.textContent = option;
+      btn.dataset.option = option;
+      btn.innerHTML = `<span class="answer-key">${String.fromCharCode(65 + index)}</span><span class="answer-text">${escapeHtml(option)}</span>`;
       btn.addEventListener("click", () => answer(option, btn));
       els.answers.appendChild(btn);
     });
@@ -305,9 +340,9 @@
         </div>
         <div class="scorebar"><span style="width:${pct}%"></span></div>
         <div class="score-meta">
-          <span>✅ ${team.correct}</span>
-          <span>❌ ${team.wrong}</span>
-          <span>🎯 ${game.targetScore}</span>
+          <span>Acertos ${team.correct}</span>
+          <span>Erros ${team.wrong}</span>
+          <span>Meta ${game.targetScore}</span>
         </div>
       `;
       target.appendChild(item);
@@ -317,15 +352,16 @@
   function updateHelpButtons() {
     const team = getCurrentTeam();
     const disabled = game.answered || game.helpUsedThisTurn || game.paused;
-    setHelp(els.teamHelpBtn, team.helps.team, disabled || team.helps.team <= 0);
-    setHelp(els.googleHelpBtn, team.helps.google, disabled || team.helps.google <= 0);
-    setHelp(els.timeHelpBtn, team.helps.time, disabled || team.helps.time <= 0);
+    setHelp(els.teamHelpBtn, team.helps.team, disabled || team.helps.team <= 0, game.usedHelpType === "team");
+    setHelp(els.googleHelpBtn, team.helps.google, disabled || team.helps.google <= 0, game.usedHelpType === "google");
+    setHelp(els.timeHelpBtn, team.helps.time, disabled || team.helps.time <= 0, game.usedHelpType === "time");
   }
 
-  function setHelp(btn, count, disabled) {
+  function setHelp(btn, count, disabled, active) {
     btn.querySelector("span").textContent = count;
     btn.disabled = disabled;
     btn.classList.toggle("used", disabled);
+    btn.classList.toggle("active-help", active);
   }
 
   function useHelp(type) {
@@ -334,18 +370,19 @@
     if (team.helps[type] <= 0) return;
     team.helps[type]--;
     game.helpUsedThisTurn = true;
+    game.usedHelpType = type;
     if (type === "team") {
-      els.feedback.innerHTML = `<strong>Consulta liberada:</strong> ${escapeHtml(team.name)} pode ajudar uma vez nesta pergunta. O timer continua rodando.`;
+      els.feedback.innerHTML = `<strong>Consulta liberada.</strong> ${escapeHtml(team.name)} pode ajudar nesta pergunta. As outras ajudas ficam bloqueadas até a próxima rodada.`;
     }
     if (type === "google") {
-      els.feedback.innerHTML = `<strong>Pesquisa liberada:</strong> uma aba do Google foi aberta com a pergunta atual.`;
+      els.feedback.innerHTML = `<strong>Pesquisa liberada.</strong> Uma aba do Google foi aberta com a pergunta atual. As outras ajudas ficam bloqueadas nesta pergunta.`;
       const url = `https://www.google.com/search?q=${encodeURIComponent(game.currentQuestion.question)}`;
       window.open(url, "_blank", "noopener,noreferrer");
     }
     if (type === "time") {
       game.remaining += 60;
       game.totalForTimer += 60;
-      els.feedback.innerHTML = `<strong>Bônus usado:</strong> +60 segundos adicionados. Nenhuma outra ajuda pode ser usada nesta pergunta.`;
+      els.feedback.innerHTML = `<strong>Bônus usado.</strong> +60 segundos adicionados. Nenhuma outra ajuda pode ser usada nesta pergunta.`;
       updateTimerVisual();
     }
     updateHelpButtons();
@@ -357,7 +394,7 @@
     timerHandle = setInterval(() => {
       if (!game || game.paused || game.answered) return;
       game.remaining--;
-      if (game.remaining <= 5 && game.remaining > 0) playSound("tick");
+      playTimerTick();
       updateTimerVisual();
       if (game.remaining <= 0) timeoutQuestion();
     }, 1000);
@@ -367,10 +404,30 @@
     const remaining = Math.max(0, game?.remaining ?? 0);
     const total = Math.max(1, game?.totalForTimer ?? 60);
     const pct = remaining / total;
+    const state = remaining <= 5 ? "critical" : remaining <= 15 ? "danger" : remaining <= 30 ? "warning" : "normal";
     els.timerText.textContent = remaining;
     els.timerProgress.style.strokeDasharray = `${CIRC}`;
     els.timerProgress.style.strokeDashoffset = `${CIRC * (1 - pct)}`;
-    els.timerProgress.style.stroke = remaining <= 10 ? "var(--danger)" : remaining <= 20 ? "var(--warning)" : "var(--primary)";
+    els.timerProgress.style.stroke = state === "critical" ? "var(--critical)" : state === "danger" ? "var(--danger)" : state === "warning" ? "var(--warning)" : "var(--primary)";
+    els.questionPanel.classList.remove("timer-normal", "timer-warning", "timer-danger", "timer-critical");
+    els.questionPanel.classList.add(`timer-${state}`);
+    if (els.timerWrap) els.timerWrap.className = `timer-wrap timer-${state}`;
+    if (els.timerLabel) {
+      els.timerLabel.textContent = state === "critical" ? "Tempo acabando" : state === "danger" ? "Reta final" : state === "warning" ? "Atenção" : "Tempo";
+    }
+  }
+
+  function playTimerTick() {
+    if (!game || game.paused || game.answered || game.remaining <= 0) return;
+    if (game.lastTickSecond === game.remaining) return;
+    game.lastTickSecond = game.remaining;
+    if (game.remaining <= 5) {
+      playSound("tick-critical");
+    } else if (game.remaining <= 15) {
+      playSound("tick-danger");
+    } else if (game.remaining <= 30 && game.remaining % 5 === 0) {
+      playSound("tick-warning");
+    }
   }
 
   function timeoutQuestion() {
@@ -387,7 +444,7 @@
     const correct = option === q.answer;
 
     $$(".answer-btn").forEach(b => {
-      if (b.textContent === q.answer) b.classList.add("correct");
+      if (b.dataset.option === q.answer) b.classList.add("correct");
       else if (b === btn) b.classList.add("wrong");
       else b.classList.add("dim");
       b.disabled = true;
@@ -442,7 +499,8 @@
     playSound("win");
     celebrate(winner.color);
     els.winnerTitle.textContent = `${winner.name} venceu!`;
-    els.winnerText.textContent = `A equipe atingiu ${winner.score} acertos e alcançou a pontuação de vitória.`;
+    const ranking = [...game.teams].sort((a, b) => b.score - a.score);
+    els.winnerText.textContent = `${winner.name} atingiu ${winner.score} acertos e alcançou a pontuação de vitória. Ranking final: ${ranking.map((team, index) => `${index + 1}. ${team.name} (${team.score})`).join(" · ")}.`;
     renderScoreboard(true);
     showView(els.winnerView);
   }
@@ -484,6 +542,12 @@
   }
 
   function bindEvents() {
+    ["pointerdown", "keydown"].forEach(eventName => {
+      window.addEventListener(eventName, () => {
+        audioReady = true;
+        initAudio();
+      }, { once: true });
+    });
     els.buildTeamsBtn.addEventListener("click", () => buildTeams(els.initialTeamCount.value));
     els.addTeamBtn.addEventListener("click", () => {
       collectTeamsFromDom();

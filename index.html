@@ -88,8 +88,8 @@
 
           <div class="start-card">
             <div>
-              <strong id="questionCountText">3.200 perguntas carregadas</strong>
-              <span>Áreas: conhecimentos gerais, raciocínio, ciências, nutrição, odontologia, enfermagem e tecnologia.</span>
+              <strong id="questionCountText">3.010 perguntas carregadas</strong>
+              <span>15 áreas equilibradas, com conhecimentos gerais, cultura pop, Brasil, esportes e temas técnicos leves.</span>
             </div>
             <button class="primary-btn" type="submit">Começar jogo</button>
           </div>
@@ -122,18 +122,31 @@
             <div class="feedback" id="feedback" aria-live="polite"></div>
 
             <div class="help-bar" aria-label="Ajudas disponíveis">
-              <button class="help-btn" id="teamHelpBtn" type="button">👥 Consultar equipe <span></span></button>
-              <button class="help-btn" id="googleHelpBtn" type="button">🔎 Pesquisar no Google <span></span></button>
-              <button class="help-btn" id="timeHelpBtn" type="button">⏱️ +1 min <span></span></button>
+              <button class="help-btn" id="teamHelpBtn" type="button">
+                <strong>Consultar equipe</strong>
+                <small>Conversa rápida com o time</small>
+                <span aria-label="Ajudas restantes"></span>
+              </button>
+              <button class="help-btn" id="googleHelpBtn" type="button">
+                <strong>Pesquisar</strong>
+                <small>Abre busca no Google</small>
+                <span aria-label="Ajudas restantes"></span>
+              </button>
+              <button class="help-btn" id="timeHelpBtn" type="button">
+                <strong>+1 minuto</strong>
+                <small>Adiciona tempo à pergunta</small>
+                <span aria-label="Ajudas restantes"></span>
+              </button>
             </div>
 
             <div class="question-footer">
-              <div class="timer-wrap" aria-label="Timer da pergunta">
+              <div class="timer-wrap timer-normal" id="timerWrap" aria-label="Timer da pergunta">
                 <svg class="timer-svg" viewBox="0 0 120 120" role="img" aria-label="Tempo restante">
                   <circle class="timer-bg" cx="60" cy="60" r="52"></circle>
                   <circle class="timer-progress" id="timerProgress" cx="60" cy="60" r="52"></circle>
                 </svg>
                 <div class="timer-center">
+                  <em id="timerLabel">Tempo</em>
                   <strong id="timerText">60</strong>
                   <span>seg</span>
                 </div>
@@ -173,11 +186,11 @@
       <h3>2. Rodadas</h3>
       <p>O sistema chama automaticamente um jogador por vez. A ordem alterna entre as equipes. Dentro de cada equipe, os integrantes também vão sendo chamados em ciclo.</p>
       <h3>3. Perguntas</h3>
-      <p>As perguntas são de múltipla escolha. A área e o nível de dificuldade aparecem antes da resposta. As alternativas são embaralhadas a cada rodada para evitar padrão.</p>
+      <p>As perguntas são de múltipla escolha. A área e o nível de dificuldade aparecem antes da resposta. As alternativas são embaralhadas a cada rodada e o próximo sorteio nunca repete a mesma área da pergunta anterior, salvo se for impossível.</p>
       <h3>4. Tempo</h3>
-      <p>Cada participante tem 60 segundos por pergunta, ou o tempo definido na configuração. Quando o tempo acaba, a pergunta é considerada errada.</p>
+      <p>Cada participante tem 60 segundos por pergunta, ou o tempo definido na configuração. O timer muda de estado aos 30, 15 e 5 segundos, com alerta visual e sons progressivos. Quando o tempo acaba, a pergunta é considerada errada.</p>
       <h3>5. Ajudas</h3>
-      <p>Cada equipe possui uma quantidade limitada de ajudas: consultar a equipe, pesquisar no Google ou ganhar mais 1 minuto. Em cada pergunta, o jogador só pode usar uma ajuda.</p>
+      <p>Cada equipe possui uma quantidade limitada de ajudas: consultar a equipe, pesquisar no Google ou ganhar mais 1 minuto. Em cada pergunta, o jogador só pode usar uma ajuda; depois de usar uma delas, as outras ficam bloqueadas até a próxima rodada.</p>
       <h3>6. Pontuação</h3>
       <p>Cada acerto vale 1 ponto para a equipe do jogador que respondeu. Erros e perguntas puladas não somam ponto.</p>
       <h3>7. Vitória</h3>
