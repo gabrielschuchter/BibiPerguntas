@@ -2,27 +2,17 @@
 
 O jogo usa apenas fontes online abertas e cache local de perguntas externas já validadas:
 
-- `tryvia`: fonte principal, em português, compatível com o formato da Open Trivia Database.
-- `opentdb`: fonte secundária. Como a maior parte do conteúdo está em inglês, o app só aceita perguntas que passem por filtros de idioma e qualidade.
+- fonte principal: em português, compatível com formato aberto de trivia.
+- fonte secundária: só entra quando a pergunta passa pelos filtros de idioma e qualidade.
 - cache em `localStorage`: guarda perguntas externas válidas para reutilização se uma nova chamada falhar.
 
 Não há banco local de perguntas embarcado no jogo.
 
-## Tryvia
-
-Endpoints estudados:
-
-- `https://tryvia.ptr.red/api_category.php`
-- `https://tryvia.ptr.red/api_token.php?command=request`
-- `https://tryvia.ptr.red/api.php?amount={quantidade}&type=multiple&token={token}`
+## Fonte principal
 
 O app pede token de sessão e busca perguntas `multiple`.
 
-## Open Trivia DB
-
-Referência:
-
-- `https://opentdb.com/api_config.php`
+## Fonte secundária
 
 Limites considerados:
 

@@ -89,9 +89,9 @@
 
           <div class="start-card">
             <div>
-              <strong id="questionCountText">Perguntas online</strong>
-              <span>O jogo busca perguntas da Tryvia e, se necessário, da OpenTDB. Só entram perguntas aprovadas nos filtros.</span>
-              <small class="question-load-status" id="questionLoadStatus" aria-live="polite">Ao começar, o jogo busca perguntas online em português. Sem internet e sem cache validado, a partida não inicia.</small>
+              <strong id="questionCountText">Perguntas selecionadas</strong>
+              <span>O jogo prepara uma seleção de perguntas em português antes da partida começar.</span>
+              <small class="question-load-status" id="questionLoadStatus" aria-live="polite">Ao começar, vamos carregar perguntas para a rodada. Se a conexão falhar, tente novamente.</small>
             </div>
             <button class="primary-btn" id="startGameBtn" type="submit">Começar jogo</button>
           </div>
@@ -116,7 +116,7 @@
             <div class="question-meta">
               <span id="areaBadge" class="badge">Área</span>
               <span id="difficultyBadge" class="badge subtle">Dificuldade</span>
-              <span id="questionId" class="badge subtle">Q0000</span>
+              <span id="questionId" class="badge subtle" hidden></span>
             </div>
             <h1 id="gameTitle" class="question-title">Pergunta</h1>
             <div id="answers" class="answers" role="list"></div>

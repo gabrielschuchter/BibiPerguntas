@@ -34,14 +34,14 @@ O projeto funciona como site estático.
 - `style.css`: layout responsivo, visual de game show, animações e estados do timer.
 - `app.js`: lógica de equipes, rodadas, sorteio, timer, sons, ajudas e pontuação.
 - `scripts/validate-questions.js`: valida que o app não usa banco local e mantém a camada online obrigatória.
-- `data/question-sources.md`: notas sobre Tryvia, OpenTDB e filtros de qualidade.
+- `data/question-sources.md`: notas sobre fontes abertas e filtros de qualidade.
 
 ## Fontes de perguntas
 
 O jogo usa apenas perguntas vindas de APIs abertas:
 
-- Tryvia API como fonte principal em português.
-- Open Trivia DB como fonte secundária, apenas quando as perguntas passam pelos filtros de idioma e qualidade.
+- Uma fonte principal em português.
+- Uma fonte secundária, apenas quando as perguntas passam pelos filtros de idioma e qualidade.
 - Cache em `localStorage` com perguntas externas já validadas.
 
 Não existe banco local de perguntas embarcado. Se não houver internet e não existir cache externo validado, a partida não inicia e a interface mostra uma mensagem amigável.
@@ -50,8 +50,8 @@ As perguntas são normalizadas internamente neste formato:
 
 ```json
 {
-  "id": "tryvia-...",
-  "source": "tryvia",
+  "id": "Q000001",
+  "source": "online",
   "area": "Conhecimentos Gerais",
   "difficulty": "Fácil",
   "question": "Pergunta limpa",
@@ -73,10 +73,10 @@ O validador não exige dependências externas. Ele checa se não há banco local
 
 Fluxo ao iniciar uma partida:
 
-1. Pedir token da Tryvia.
+1. Pedir token da fonte principal.
 2. Buscar perguntas `type=multiple`.
 3. Normalizar, decodificar HTML entities, validar e filtrar perguntas ruins.
-4. Se necessário, tentar OpenTDB com os mesmos filtros.
+4. Se necessário, tentar a fonte secundária com os mesmos filtros.
 5. Salvar perguntas externas válidas em `localStorage`.
 6. Se uma nova busca falhar, usar apenas cache externo validado.
 7. Se não houver API nem cache, não iniciar a partida.

@@ -6,8 +6,8 @@
   const COLORS = ["#7dd3fc", "#a78bfa", "#34d399", "#fbbf24", "#fb7185", "#f472b6", "#38bdf8", "#c4b5fd"];
   const CIRC = 2 * Math.PI * 52;
   const CACHE_KEY = "batalhaPerguntasQuestionCache.v1";
-  const TRYVIA_TOKEN_KEY = "batalhaPerguntasTryviaToken.v1";
-  const OPENTDB_TOKEN_KEY = "batalhaPerguntasOpenTdbToken.v1";
+  const PRIMARY_TOKEN_KEY = "batalhaPerguntasPrimaryToken.v1";
+  const SECONDARY_TOKEN_KEY = "batalhaPerguntasSecondaryToken.v1";
   const FORBIDDEN_QUESTION_PATTERNS = [
     /Rodada técnica/i, /Pergunta clássica/i, /Questão gerada/i, /Curiosidade geral/i,
     /Pergunta\s*#\d+/i, /Rodada\s*#\d+/i, /Técnica leve\s*#\d+/i,
@@ -316,16 +316,14 @@
     const wrongs = Array.isArray(raw.incorrect_answers) ? raw.incorrect_answers.map(normalizeText) : [];
     const options = [answer, ...wrongs].filter(Boolean);
     return {
-      id: `${source}-${Date.now()}-${index}`,
+      id: `Q${String(Date.now()).slice(-6)}-${String(index + 1).padStart(2, "0")}`,
       source,
       area: canonicalArea(mapExternalCategory(raw.category, source)),
       difficulty: mapDifficulty(raw.difficulty),
       question,
       options,
       answer,
-      explanation: source === "tryvia"
-        ? "Pergunta carregada da Tryvia, uma API aberta de trivia em português."
-        : "Pergunta carregada de uma API aberta de trivia."
+      explanation: ""
     };
   }
 
@@ -414,23 +412,23 @@
     return data.token;
   }
 
-  async function fetchTryviaQuestions({ amount = 50 } = {}) {
-    const token = await requestToken("https://tryvia.ptr.red/api_token.php?command=request", TRYVIA_TOKEN_KEY);
+  async function fetchPrimaryQuestions({ amount = 50 } = {}) {
+    const token = await requestToken("https://tryvia.ptr.red/api_token.php?command=request", PRIMARY_TOKEN_KEY);
     const url = `https://tryvia.ptr.red/api.php?amount=${amount}&type=multiple&token=${encodeURIComponent(token)}`;
     const response = await fetch(url);
-    if (!response.ok) throw new Error(`Tryvia HTTP ${response.status}`);
+    if (!response.ok) throw new Error(`Fonte principal HTTP ${response.status}`);
     const data = await response.json();
-    if (Number(data.response_code) !== 0 || !Array.isArray(data.results)) throw new Error(`Tryvia response_code ${data.response_code}`);
+    if (Number(data.response_code) !== 0 || !Array.isArray(data.results)) throw new Error(`Fonte principal response_code ${data.response_code}`);
     return data.results.map((raw, index) => normalizeExternalQuestion(raw, "tryvia", index)).filter(validateQuestion);
   }
 
-  async function fetchOpenTDBQuestions({ amount = 20 } = {}) {
-    const token = await requestToken("https://opentdb.com/api_token.php?command=request", OPENTDB_TOKEN_KEY);
+  async function fetchSecondaryQuestions({ amount = 20 } = {}) {
+    const token = await requestToken("https://opentdb.com/api_token.php?command=request", SECONDARY_TOKEN_KEY);
     const url = `https://opentdb.com/api.php?amount=${Math.min(50, amount)}&type=multiple&token=${encodeURIComponent(token)}`;
     const response = await fetch(url);
-    if (!response.ok) throw new Error(`OpenTDB HTTP ${response.status}`);
+    if (!response.ok) throw new Error(`Fonte secundária HTTP ${response.status}`);
     const data = await response.json();
-    if (Number(data.response_code) !== 0 || !Array.isArray(data.results)) throw new Error(`OpenTDB response_code ${data.response_code}`);
+    if (Number(data.response_code) !== 0 || !Array.isArray(data.results)) throw new Error(`Fonte secundária response_code ${data.response_code}`);
     return data.results.map((raw, index) => normalizeExternalQuestion(raw, "opentdb", index)).filter(validateQuestion);
   }
 
@@ -439,26 +437,26 @@
     setQuestionStatus("Carregando perguntas...", "");
     const slowMessage = setTimeout(() => setQuestionStatus("Buscando perguntas em português...", ""), 1800);
     try {
-      setQuestionStatus("Buscando perguntas em português na Tryvia...", "");
+      setQuestionStatus("Buscando perguntas em português...", "");
       let external = [];
       try {
-        external = await fetchTryviaQuestions({ amount: 50 });
+        external = await fetchPrimaryQuestions({ amount: 50 });
       } catch (e) {
-        console.warn("Tryvia indisponível ou sem perguntas adequadas.", e);
+        console.warn("Fonte principal indisponível ou sem perguntas adequadas.", e);
       }
       if (external.length < 20) {
         try {
-          setQuestionStatus("Tentando fonte secundária de trivia...", "");
-          external = [...external, ...(await fetchOpenTDBQuestions({ amount: 20 }))];
+          setQuestionStatus("Preparando mais perguntas...", "");
+          external = [...external, ...(await fetchSecondaryQuestions({ amount: 20 }))];
         } catch (e) {
-          console.warn("OpenTDB indisponível ou sem perguntas adequadas.", e);
+          console.warn("Fonte secundária indisponível ou sem perguntas adequadas.", e);
         }
       }
       if (external.length) {
         saveQuestionCache(external);
         const queue = buildBalancedQuestionQueue(external);
         clearTimeout(slowMessage);
-        setQuestionStatus(`Perguntas online carregadas: ${external.length} aprovadas nos filtros.`, "success");
+        setQuestionStatus(`Perguntas carregadas: ${external.length} aprovadas para o jogo.`, "success");
         return queue;
       }
       throw new Error("Nenhuma pergunta externa passou nos filtros.");
@@ -467,10 +465,10 @@
       console.warn("Não foi possível carregar perguntas online.", error);
       if (cached.length) {
         const queue = buildBalancedQuestionQueue(cached);
-        setQuestionStatus("Não foi possível carregar novas perguntas online. Usando cache externo validado.", "warning");
+        setQuestionStatus("Não foi possível carregar novas perguntas. Usando perguntas já preparadas anteriormente.", "warning");
         return queue;
       }
-      setQuestionStatus("Não foi possível carregar perguntas online. Verifique a conexão e tente novamente.", "warning");
+      setQuestionStatus("Não foi possível carregar perguntas. Verifique a conexão e tente novamente.", "warning");
       return [];
     }
   }
@@ -585,7 +583,7 @@
     els.turnStrip.innerHTML = `<span class="player-pill" style="--team-color:${team.color}">${escapeHtml(player)}</span><span>${escapeHtml(team.name)} responde agora · Rodada ${game.round}</span>`;
     els.areaBadge.textContent = q.area;
     els.difficultyBadge.textContent = q.difficulty;
-    els.questionId.textContent = q.id;
+    els.questionId.textContent = "";
     els.gameTitle.textContent = q.question;
     els.answers.innerHTML = "";
     game.currentOptions.forEach((option, index) => {
@@ -734,7 +732,7 @@
       team.score++;
       team.correct++;
       els.questionPanel.classList.add("correct");
-      els.feedback.innerHTML = `<strong>Correto!</strong> ${escapeHtml(q.explanation || `A resposta era ${q.answer}.`)}`;
+      els.feedback.innerHTML = "<strong>Correto!</strong>";
       playSound("correct");
       celebrate(team.color);
       if (team.score >= game.targetScore) {
@@ -744,7 +742,7 @@
       team.wrong++;
       els.questionPanel.classList.add("wrong");
       const intro = timeout ? "<strong>Tempo esgotado.</strong>" : "<strong>Errado.</strong>";
-      els.feedback.innerHTML = `${intro} Resposta correta: <strong>${escapeHtml(q.answer)}</strong>. ${escapeHtml(q.explanation || "")}`;
+      els.feedback.innerHTML = `${intro} Resposta correta: <strong>${escapeHtml(q.answer)}</strong>.`;
       playSound("wrong");
     }
     els.nextBtn.disabled = false;
@@ -876,9 +874,9 @@
     els.newSetupBtn.addEventListener("click", () => resetAll(true));
     els.clearCacheBtn.addEventListener("click", () => {
       localStorage.removeItem(CACHE_KEY);
-      localStorage.removeItem(TRYVIA_TOKEN_KEY);
-      localStorage.removeItem(OPENTDB_TOKEN_KEY);
-      setQuestionStatus("Cache de perguntas limpo. A próxima partida buscará perguntas online novamente.", "success");
+      localStorage.removeItem(PRIMARY_TOKEN_KEY);
+      localStorage.removeItem(SECONDARY_TOKEN_KEY);
+      setQuestionStatus("Perguntas salvas foram limpas. A próxima partida buscará uma nova seleção.", "success");
     });
     window.addEventListener("keydown", (e) => {
       if (!game || !els.gameView.classList.contains("active")) return;
@@ -895,7 +893,7 @@
   }
 
   function init() {
-    els.questionCountText.textContent = "Perguntas online";
+    els.questionCountText.textContent = "Perguntas selecionadas";
     els.timerProgress.style.strokeDasharray = `${CIRC}`;
     if (!restoreSetup()) buildTeams(3);
     bindEvents();

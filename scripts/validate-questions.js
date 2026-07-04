@@ -57,4 +57,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Validação concluída: jogo sem banco local, usando Tryvia/OpenTDB/cache externo validado.");
+console.log("Validação concluída: jogo sem banco local, usando fontes online e cache externo validado.");
