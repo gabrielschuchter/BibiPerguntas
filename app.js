@@ -28,6 +28,8 @@
   let timerHandle = null;
   let audioCtx = null;
   let audioReady = false;
+  let musicHandle = null;
+  let musicStep = 0;
 
   function shuffle(arr) {
     const copy = [...arr];
@@ -70,6 +72,32 @@
     osc.stop(t + duration + 0.04);
   }
 
+  function startMusic() {
+    if (!audioReady || musicHandle || !game || game.paused || game.answered) return;
+    initAudio();
+    if (!audioCtx) return;
+    if (audioCtx.state === "suspended") audioCtx.resume();
+    musicHandle = setInterval(playMusicPulse, 720);
+    playMusicPulse();
+  }
+
+  function stopMusic() {
+    if (musicHandle) clearInterval(musicHandle);
+    musicHandle = null;
+  }
+
+  function playMusicPulse() {
+    if (!audioCtx || !game || game.paused || game.answered) {
+      stopMusic();
+      return;
+    }
+    const bass = [130.81, 146.83, 164.81, 196.00];
+    const color = [261.63, 329.63, 392.00, 493.88, 440.00, 392.00, 329.63, 293.66];
+    tone(bass[Math.floor(musicStep / 4) % bass.length], 0.42, "triangle", 0.009, 0);
+    if (musicStep % 2 === 0) tone(color[musicStep % color.length], 0.18, "sine", 0.006, 0.08);
+    musicStep = (musicStep + 1) % 16;
+  }
+
   function playSound(kind) {
     try {
       if (!audioReady) return;
@@ -77,23 +105,25 @@
       if (!audioCtx) return;
       if (audioCtx.state === "suspended") audioCtx.resume();
       if (kind === "correct") {
-        tone(523.25, 0.16, "sine", 0.05, 0);
-        tone(659.25, 0.18, "sine", 0.05, 0.12);
-        tone(783.99, 0.22, "sine", 0.05, 0.24);
+        tone(523.25, 0.16, "triangle", 0.09, 0);
+        tone(659.25, 0.18, "triangle", 0.085, 0.10);
+        tone(783.99, 0.24, "triangle", 0.085, 0.21);
+        tone(1046.50, 0.28, "sine", 0.065, 0.36);
       } else if (kind === "wrong") {
-        tone(220, 0.22, "sawtooth", 0.035, 0);
-        tone(146.83, 0.26, "sawtooth", 0.03, 0.18);
+        tone(196, 0.28, "sawtooth", 0.07, 0);
+        tone(155.56, 0.30, "sawtooth", 0.065, 0.16);
+        tone(98, 0.36, "triangle", 0.055, 0.34);
       } else if (kind === "tick") {
         tone(880, 0.06, "square", 0.018, 0);
       } else if (kind === "tick-warning") {
-        tone(620, 0.055, "triangle", 0.014, 0);
+        tone(620, 0.06, "triangle", 0.025, 0);
       } else if (kind === "tick-danger") {
-        tone(760, 0.065, "square", 0.018, 0);
+        tone(760, 0.075, "square", 0.036, 0);
       } else if (kind === "tick-critical") {
-        tone(980, 0.075, "square", 0.022, 0);
-        tone(1220, 0.055, "triangle", 0.012, 0.055);
+        tone(980, 0.08, "square", 0.048, 0);
+        tone(1220, 0.065, "triangle", 0.032, 0.055);
       } else if (kind === "win") {
-        [523, 659, 784, 1046].forEach((f, i) => tone(f, 0.22, "triangle", 0.05, i * 0.13));
+        [523, 659, 784, 1046, 1318, 1568].forEach((f, i) => tone(f, 0.24, "triangle", 0.085, i * 0.11));
       }
     } catch (e) {
       // Audio is decorative; ignore browser restrictions.
@@ -296,6 +326,7 @@
     renderScoreboard();
     updateHelpButtons();
     startTimer();
+    startMusic();
   }
 
   function renderQuestion() {
@@ -439,6 +470,7 @@
     if (!game || game.answered || game.paused) return;
     game.answered = true;
     clearInterval(timerHandle);
+    stopMusic();
     const q = game.currentQuestion;
     const team = getCurrentTeam();
     const correct = option === q.answer;
@@ -491,11 +523,14 @@
     game.paused = !game.paused;
     els.pauseBtn.textContent = game.paused ? "Retomar" : "Pausar";
     els.feedback.innerHTML = game.paused ? "<strong>Jogo pausado.</strong> O timer foi interrompido." : "";
+    if (game.paused) stopMusic();
+    else startMusic();
     updateHelpButtons();
   }
 
   function finishGame(winner) {
     clearInterval(timerHandle);
+    stopMusic();
     playSound("win");
     celebrate(winner.color);
     els.winnerTitle.textContent = `${winner.name} venceu!`;
@@ -507,6 +542,7 @@
 
   function resetAll(toSetup = true) {
     clearInterval(timerHandle);
+    stopMusic();
     game = null;
     if (toSetup) showView(els.setupView);
   }

@@ -40,7 +40,7 @@ O projeto funciona como site estático.
 
 ## Banco de perguntas
 
-A base atual tem **3.010 perguntas originais em português brasileiro**. O estilo é inspirado em jogos clássicos de perguntas de auditório, sem copiar literalmente perguntas proprietárias de programas, sites ou bancos fechados.
+A base atual tem **500 perguntas originais em português brasileiro**. O estilo é inspirado em jogos clássicos de perguntas de auditório, sem copiar literalmente perguntas proprietárias de programas, sites ou bancos fechados.
 
 Categorias:
 
@@ -62,8 +62,8 @@ Categorias:
 
 Distribuição:
 
-- 205 perguntas em cada categoria principal.
-- 140 perguntas em Matemática e raciocínio.
+- 34 perguntas em cada categoria principal.
+- 24 perguntas em Matemática e raciocínio.
 - Matemática fica abaixo de 5% da base.
 - Dificuldades: `Fácil`, `Média` e `Avançada`.
 
@@ -124,7 +124,7 @@ Tempo padrão: 60 segundos.
 - 15s a 6s: perigo, pulso mais forte e som mais frequente.
 - 5s a 1s: crítico, número destacado, brilho e som mais intenso.
 
-Os sons são gerados pela Web Audio API, sem arquivos externos. O áudio só é ativado depois de interação do usuário, respeitando as restrições dos navegadores.
+Os sons são gerados pela Web Audio API, sem arquivos externos. O jogo tem uma trilha sintética sutil durante cada pergunta e efeitos mais fortes para acerto, erro, vitória e reta final do timer. O áudio só é ativado depois de interação do usuário, respeitando as restrições dos navegadores.
 
 ## Ajudas
 

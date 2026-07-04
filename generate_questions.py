@@ -22,8 +22,8 @@ AREAS = [
     "Matemática e raciocínio",
 ]
 
-QUOTAS = {area: 205 for area in AREAS}
-QUOTAS["Matemática e raciocínio"] = 140
+QUOTAS = {area: 34 for area in AREAS}
+QUOTAS["Matemática e raciocínio"] = 24
 
 DIFFICULTIES = ["Fácil", "Média", "Avançada"]
 random.seed(20260704)
@@ -105,6 +105,29 @@ class Builder:
 def rotate(values, n):
     values = list(values)
     return values[n:] + values[:n]
+
+
+def country_ref(country):
+    feminine = {
+        "Itália", "França", "Argentina", "China", "Índia", "Tailândia", "Austrália",
+        "Nova Zelândia", "África do Sul", "Noruega", "Suécia", "Dinamarca", "Islândia",
+        "Irlanda", "Suíça", "Bélgica", "Áustria", "Polônia", "Hungria", "Colômbia",
+        "República Tcheca", "Croácia", "Ucrânia", "Arábia Saudita", "Indonésia",
+        "Malásia", "Etiópia", "Nigéria", "Bolívia", "Venezuela", "Espanha",
+        "Alemanha", "Grécia", "Turquia", "Rússia", "Coreia do Sul",
+    }
+    masculine = {
+        "Japão", "Egito", "Canadá", "México", "Uruguai", "Peru", "Chile",
+        "Reino Unido", "Marrocos", "Quênia", "Irã", "Iraque", "Gana", "Equador",
+    }
+    plural = {"Estados Unidos", "Países Baixos", "Filipinas"}
+    if country in feminine:
+        return f"da {country}"
+    if country in masculine:
+        return f"do {country}"
+    if country in plural:
+        return f"dos {country}"
+    return f"de {country}"
 
 
 def clue_question(clue, n, domain=None):
@@ -193,7 +216,7 @@ country_rows = [
 ]
 
 geo_templates = [
-    (lambda r: (f"Qual é a capital de {r['country']}?", r["capital"], f"A capital de {r['country']} é {r['capital']}.")),
+    (lambda r: (f"Qual é a capital {country_ref(r['country'])}?", r["capital"], f"A capital {country_ref(r['country'])} é {r['capital']}.")),
     (lambda r: (f"Em qual região ou continente fica {r['country']}?", r["continent"], f"{r['country']} fica em {r['continent']}.")),
     (lambda r: (f"Qual país é muito associado a {r['known']}?", r["country"], f"{r['country']} é conhecido por {r['known']}.")),
 ]

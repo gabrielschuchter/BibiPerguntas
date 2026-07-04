@@ -500,12 +500,3 @@ button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
   .score-meta { grid-template-columns: 1fr; }
   .mini-rules span { font-size: 14px; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .001ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: .001ms !important;
-  }
-}

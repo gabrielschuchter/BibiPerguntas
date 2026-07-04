@@ -28,6 +28,12 @@ FORBIDDEN_PATTERNS = [
     r"Curiosidade geral",
     r"Questão gerada",
     r"Desempate rápido",
+    r"O que está sendo descrito",
+    r"Qual alternativa corresponde a esta pista",
+    r"Qual resposta combina melhor com esta descrição",
+    r"A pista '.+' aponta",
+    r"Qual opção se encaixa na explicação",
+    r"qual resposta a descrição indica",
     r"#\d+",
 ]
 
@@ -53,8 +59,8 @@ def main():
 
     if questions != js_questions:
         errors.append("questions.json e questions.js não estão sincronizados.")
-    if len(questions) < 3000:
-        errors.append(f"Banco tem apenas {len(questions)} perguntas.")
+    if len(questions) != 500:
+        errors.append(f"Banco deve ter exatamente 500 perguntas, mas tem {len(questions)}.")
 
     ids = [q.get("id") for q in questions]
     if len(ids) != len(set(ids)):
