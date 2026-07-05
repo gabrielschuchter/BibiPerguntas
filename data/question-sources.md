@@ -5,8 +5,9 @@ O jogo usa apenas fontes online abertas e cache local de perguntas externas já 
 - fonte principal: em português, compatível com formato aberto de trivia.
 - fonte secundária: só entra quando a pergunta passa pelos filtros de idioma e qualidade.
 - cache em `localStorage`: guarda perguntas externas válidas para reutilização se uma nova chamada falhar.
+- fallback local embutido em `app.js`: usado apenas quando não há fonte online nem cache.
 
-Não há banco local de perguntas embarcado no jogo.
+O fallback local é pequeno, revisado e existe para manter a partida jogável abrindo `index.html` sem internet.
 
 ## Fonte principal
 

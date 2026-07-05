@@ -8,6 +8,56 @@
   const CACHE_KEY = "batalhaPerguntasQuestionCache.v1";
   const PRIMARY_TOKEN_KEY = "batalhaPerguntasPrimaryToken.v1";
   const SECONDARY_TOKEN_KEY = "batalhaPerguntasSecondaryToken.v1";
+  const DEBUG_QUESTION_SELECTION = false;
+  const DIFFICULTIES = ["Fácil", "Média", "Avançada"];
+  const TEAM_RECENT_AREA_MEMORY = 3;
+  const LOCAL_FALLBACK_QUESTIONS = [
+    { area: "Geografia", difficulty: "Fácil", question: "Qual país europeu é conhecido pelo formato de uma bota?", options: ["Itália", "França", "Portugal", "Alemanha"], answer: "Itália", explanation: "A Itália é frequentemente associada ao formato de uma bota no mapa." },
+    { area: "Geografia", difficulty: "Fácil", question: "Qual é o maior oceano do planeta?", options: ["Pacífico", "Atlântico", "Índico", "Ártico"], answer: "Pacífico", explanation: "O Oceano Pacífico é o maior em área." },
+    { area: "Geografia", difficulty: "Média", question: "Em qual continente fica o Egito?", options: ["África", "Ásia", "Europa", "Oceania"], answer: "África", explanation: "A maior parte do Egito fica no nordeste da África." },
+    { area: "Geografia", difficulty: "Avançada", question: "Em qual país fica a cidade de Casablanca?", options: ["Marrocos", "Tunísia", "Egito", "Líbano"], answer: "Marrocos", explanation: "Casablanca é uma das cidades mais conhecidas do Marrocos." },
+    { area: "História", difficulty: "Fácil", question: "Quem é conhecido por ter proclamado a Independência do Brasil?", options: ["Dom Pedro I", "Tiradentes", "Getúlio Vargas", "Dom João VI"], answer: "Dom Pedro I", explanation: "Dom Pedro I proclamou a independência em 1822." },
+    { area: "História", difficulty: "Média", question: "Qual civilização construiu Machu Picchu?", options: ["Inca", "Maia", "Asteca", "Egípcia"], answer: "Inca", explanation: "Machu Picchu foi construída pelos incas, nos Andes." },
+    { area: "História", difficulty: "Avançada", question: "A queda de Constantinopla ocorreu em que século?", options: ["Século XV", "Século XIII", "Século XVI", "Século XI"], answer: "Século XV", explanation: "Constantinopla caiu em 1453, no século XV." },
+    { area: "Ciências", difficulty: "Fácil", question: "Qual é o maior planeta do Sistema Solar?", options: ["Júpiter", "Saturno", "Terra", "Marte"], answer: "Júpiter", explanation: "Júpiter é o maior planeta do Sistema Solar." },
+    { area: "Ciências", difficulty: "Fácil", question: "Qual gás é essencial para a respiração humana?", options: ["Oxigênio", "Hélio", "Metano", "Neônio"], answer: "Oxigênio", explanation: "O corpo humano usa oxigênio no processo de respiração celular." },
+    { area: "Ciências", difficulty: "Média", question: "Qual é a substância natural mais dura encontrada na Terra?", options: ["Diamante", "Quartzo", "Granito", "Ferro"], answer: "Diamante", explanation: "O diamante é famoso por sua alta dureza natural." },
+    { area: "Ciências", difficulty: "Avançada", question: "Qual cientista é associado às três leis do movimento?", options: ["Isaac Newton", "Albert Einstein", "Charles Darwin", "Louis Pasteur"], answer: "Isaac Newton", explanation: "As três leis do movimento são associadas a Isaac Newton." },
+    { area: "Animais e Natureza", difficulty: "Fácil", question: "Qual animal é conhecido como o rei da selva?", options: ["Leão", "Tigre", "Elefante", "Gorila"], answer: "Leão", explanation: "O leão é popularmente chamado de rei da selva." },
+    { area: "Animais e Natureza", difficulty: "Média", question: "Qual ave é famosa por imitar sons e palavras?", options: ["Papagaio", "Pinguim", "Avestruz", "Canário-da-terra"], answer: "Papagaio", explanation: "Papagaios conseguem imitar sons com grande habilidade." },
+    { area: "Animais e Natureza", difficulty: "Média", question: "Qual mamífero põe ovos?", options: ["Ornitorrinco", "Morcego", "Golfinho", "Capivara"], answer: "Ornitorrinco", explanation: "O ornitorrinco é um mamífero monotremado, que põe ovos." },
+    { area: "Brasil", difficulty: "Fácil", question: "Qual é a capital do Brasil?", options: ["Brasília", "Rio de Janeiro", "São Paulo", "Salvador"], answer: "Brasília", explanation: "Brasília é a capital federal desde 1960." },
+    { area: "Brasil", difficulty: "Fácil", question: "Qual bioma brasileiro é conhecido pela maior floresta tropical do mundo?", options: ["Amazônia", "Cerrado", "Caatinga", "Pampa"], answer: "Amazônia", explanation: "A Amazônia abriga a maior floresta tropical do planeta." },
+    { area: "Brasil", difficulty: "Média", question: "Qual cidade brasileira é famosa pelo Cristo Redentor?", options: ["Rio de Janeiro", "Belo Horizonte", "Recife", "Curitiba"], answer: "Rio de Janeiro", explanation: "O Cristo Redentor fica no Rio de Janeiro." },
+    { area: "Brasil", difficulty: "Avançada", question: "Em qual estado brasileiro fica o Jalapão?", options: ["Tocantins", "Goiás", "Bahia", "Maranhão"], answer: "Tocantins", explanation: "O Jalapão é uma região turística do Tocantins." },
+    { area: "Cultura Pop", difficulty: "Fácil", question: "Qual é o nome do caracol de estimação do Bob Esponja?", options: ["Gary", "Patrick", "Sandy", "Plankton"], answer: "Gary", explanation: "Gary é o caracol de estimação do Bob Esponja." },
+    { area: "Cultura Pop", difficulty: "Fácil", question: "Em qual saga aparece o personagem Darth Vader?", options: ["Star Wars", "Harry Potter", "Matrix", "O Senhor dos Anéis"], answer: "Star Wars", explanation: "Darth Vader é um dos personagens mais conhecidos de Star Wars." },
+    { area: "Cultura Pop", difficulty: "Média", question: "Qual personagem usa um escudo com estrela no centro?", options: ["Capitão América", "Homem de Ferro", "Batman", "Aquaman"], answer: "Capitão América", explanation: "O escudo com estrela é marca do Capitão América." },
+    { area: "Esportes", difficulty: "Fácil", question: "Quantos jogadores um time de futebol tem em campo?", options: ["11", "9", "7", "13"], answer: "11", explanation: "Cada equipe de futebol joga com 11 atletas em campo." },
+    { area: "Esportes", difficulty: "Média", question: "Em qual esporte se usa uma raquete e uma peteca?", options: ["Badminton", "Tênis", "Squash", "Beisebol"], answer: "Badminton", explanation: "No badminton, a peteca é rebatida com raquetes." },
+    { area: "Esportes", difficulty: "Média", question: "Qual país é associado à origem do judô?", options: ["Japão", "China", "Coreia do Sul", "Tailândia"], answer: "Japão", explanation: "O judô foi criado no Japão." },
+    { area: "Artes e Literatura", difficulty: "Fácil", question: "De quem é a frase “Penso, logo existo”?", options: ["René Descartes", "Platão", "Machado de Assis", "Galileu Galilei"], answer: "René Descartes", explanation: "A frase é associada ao filósofo René Descartes." },
+    { area: "Artes e Literatura", difficulty: "Média", question: "Quem escreveu Dom Casmurro?", options: ["Machado de Assis", "José de Alencar", "Clarice Lispector", "Cecília Meireles"], answer: "Machado de Assis", explanation: "Dom Casmurro é um romance de Machado de Assis." },
+    { area: "Artes e Literatura", difficulty: "Avançada", question: "Qual pintor é associado ao quadro Guernica?", options: ["Pablo Picasso", "Salvador Dalí", "Claude Monet", "Vincent van Gogh"], answer: "Pablo Picasso", explanation: "Guernica é uma das obras mais famosas de Picasso." },
+    { area: "Conhecimentos Gerais", difficulty: "Fácil", question: "Qual alimento é conhecido por praticamente não estragar?", options: ["Mel", "Leite", "Pão", "Banana"], answer: "Mel", explanation: "O mel tem características que dificultam a proliferação de microrganismos." },
+    { area: "Conhecimentos Gerais", difficulty: "Fácil", question: "Qual objeto é usado para medir temperatura?", options: ["Termômetro", "Bússola", "Barômetro", "Trena"], answer: "Termômetro", explanation: "O termômetro mede temperatura." },
+    { area: "Conhecimentos Gerais", difficulty: "Média", question: "Qual instrumento indica os pontos cardeais?", options: ["Bússola", "Microscópio", "Telescópio", "Cronômetro"], answer: "Bússola", explanation: "A bússola usa uma agulha imantada para indicar direções." },
+    { area: "Conhecimentos Gerais", difficulty: "Avançada", question: "Qual metal é líquido em temperatura ambiente?", options: ["Mercúrio", "Alumínio", "Cobre", "Zinco"], answer: "Mercúrio", explanation: "O mercúrio é um metal líquido em temperatura ambiente." },
+    { area: "Tecnologia", difficulty: "Fácil", question: "O que significa HTTPS em um site?", options: ["Conexão protegida", "Página sem imagens", "Arquivo compactado", "Rede sem fio"], answer: "Conexão protegida", explanation: "HTTPS indica uma camada de segurança na comunicação com o site." },
+    { area: "Tecnologia", difficulty: "Fácil", question: "Qual tecla costuma confirmar uma ação em formulários?", options: ["Enter", "Esc", "Shift", "Tab"], answer: "Enter", explanation: "A tecla Enter é usada com frequência para confirmar ações." },
+    { area: "Tecnologia", difficulty: "Média", question: "Qual item armazena arquivos de forma permanente no computador?", options: ["SSD", "Memória RAM", "Monitor", "Teclado"], answer: "SSD", explanation: "O SSD armazena dados mesmo após desligar o computador." },
+    { area: "Nutrição", difficulty: "Fácil", question: "Qual vitamina é produzida na pele com ajuda da luz solar?", options: ["Vitamina D", "Vitamina C", "Vitamina K", "Vitamina B12"], answer: "Vitamina D", explanation: "A exposição solar ajuda o corpo a produzir vitamina D." },
+    { area: "Nutrição", difficulty: "Fácil", question: "Qual grupo alimentar é conhecido por fornecer bastante fibra?", options: ["Frutas e verduras", "Refrigerantes", "Balas", "Óleos"], answer: "Frutas e verduras", explanation: "Frutas e verduras costumam ser boas fontes de fibras." },
+    { area: "Nutrição", difficulty: "Média", question: "Qual nutriente é muito associado à construção de músculos?", options: ["Proteína", "Água", "Sódio", "Cafeína"], answer: "Proteína", explanation: "Proteínas participam da manutenção e construção dos tecidos." },
+    { area: "Odontologia", difficulty: "Fácil", question: "Qual é o nome popular dos terceiros molares?", options: ["Sisos", "Caninos", "Incisivos", "Pré-molares"], answer: "Sisos", explanation: "Os terceiros molares são conhecidos popularmente como sisos." },
+    { area: "Odontologia", difficulty: "Fácil", question: "Qual parte visível do dente fica acima da gengiva?", options: ["Coroa", "Raiz", "Canal", "Nervo"], answer: "Coroa", explanation: "A coroa é a parte visível do dente." },
+    { area: "Odontologia", difficulty: "Média", question: "Qual objeto é usado junto com a escova para limpar entre os dentes?", options: ["Fio dental", "Algodão", "Gaze", "Palito de sorvete"], answer: "Fio dental", explanation: "O fio dental ajuda na limpeza entre os dentes." },
+    { area: "Enfermagem", difficulty: "Fácil", question: "Qual aparelho costuma ser usado para aferir a pressão arterial?", options: ["Esfigmomanômetro", "Termômetro", "Otoscópio", "Estetoscópio fetal"], answer: "Esfigmomanômetro", explanation: "O esfigmomanômetro é usado para medir pressão arterial." },
+    { area: "Enfermagem", difficulty: "Fácil", question: "Qual sinal vital é contado em batimentos por minuto?", options: ["Pulso", "Altura", "Peso", "Visão"], answer: "Pulso", explanation: "O pulso é contado em batimentos por minuto." },
+    { area: "Enfermagem", difficulty: "Média", question: "Qual item é usado para medir febre?", options: ["Termômetro", "Seringa", "Máscara", "Luvas"], answer: "Termômetro", explanation: "O termômetro mede a temperatura corporal." },
+    { area: "Matemática e Raciocínio", difficulty: "Fácil", question: "Qual forma geométrica não tem lados?", options: ["Círculo", "Quadrado", "Triângulo", "Retângulo"], answer: "Círculo", explanation: "O círculo não possui lados retos." },
+    { area: "Matemática e Raciocínio", difficulty: "Média", question: "Se uma dúzia tem 12 unidades, quanto é meia dúzia?", options: ["6", "8", "10", "4"], answer: "6", explanation: "Meia dúzia corresponde à metade de 12." }
+  ];
   const FORBIDDEN_QUESTION_PATTERNS = [
     /Rodada técnica/i, /Pergunta clássica/i, /Questão gerada/i, /Curiosidade geral/i,
     /Pergunta\s*#\d+/i, /Rodada\s*#\d+/i, /Técnica leve\s*#\d+/i,
@@ -50,6 +100,28 @@
       [copy[i], copy[j]] = [copy[j], copy[i]];
     }
     return copy;
+  }
+
+  function normalizeForKey(value) {
+    return normalizeText(value)
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^\w]+/g, " ")
+      .trim();
+  }
+
+  function stableQuestionId(question) {
+    const key = normalizeForKey(question);
+    let hash = 0;
+    for (let i = 0; i < key.length; i++) {
+      hash = ((hash << 5) - hash + key.charCodeAt(i)) | 0;
+    }
+    return `Q${Math.abs(hash).toString(36).toUpperCase().padStart(6, "0")}`;
+  }
+
+  function getQuestionKey(question) {
+    return normalizeForKey(question?.question) || normalizeForKey(question?.id);
   }
 
   function clampNumber(value, fallback, min = 0) {
@@ -225,7 +297,7 @@
         team.size = clampNumber(input.value, 1, 1);
         normalizeMembers(team);
       } else {
-        team[field] = input.value.trim() || (field === "name" ? `Equipe ${Number(input.dataset.team) + 1}` : COLORS[Number(input.dataset.team) % COLORS.length]);
+        team[field] = input.value.trim();
       }
     });
     $$('[data-member]').forEach(input => {
@@ -239,8 +311,14 @@
   function validateSetup() {
     collectTeamsFromDom();
     if (teamDrafts.length < 2) return "Cadastre pelo menos 2 equipes.";
+    const names = new Set();
     for (const [i, team] of teamDrafts.entries()) {
       if (!team.name.trim()) return `A equipe ${i + 1} precisa ter nome.`;
+      const normalizedName = normalizeForKey(team.name);
+      if (names.has(normalizedName)) return `O nome "${team.name}" já está em uso. Escolha nomes diferentes para as equipes.`;
+      names.add(normalizedName);
+      if (!/^#[0-9a-f]{6}$/i.test(team.color)) return `${team.name}: escolha uma cor válida.`;
+      if (Number(team.size) < 1) return `${team.name}: a quantidade de integrantes precisa ser pelo menos 1.`;
       if (team.members.length !== Number(team.size)) return `${team.name} precisa ter exatamente ${team.size} integrantes.`;
       const blank = team.members.findIndex(m => !m.trim());
       if (blank !== -1) return `${team.name}: preencha o nome do integrante ${blank + 1}.`;
@@ -316,7 +394,7 @@
     const wrongs = Array.isArray(raw.incorrect_answers) ? raw.incorrect_answers.map(normalizeText) : [];
     const options = [answer, ...wrongs].filter(Boolean);
     return {
-      id: `Q${String(Date.now()).slice(-6)}-${String(index + 1).padStart(2, "0")}`,
+      id: stableQuestionId(question || `${source}-${index}`),
       source,
       area: canonicalArea(mapExternalCategory(raw.category, source)),
       difficulty: mapDifficulty(raw.difficulty),
@@ -324,6 +402,20 @@
       options,
       answer,
       explanation: ""
+    };
+  }
+
+  function normalizeLocalQuestion(raw, index = 0) {
+    const question = stripQuestionPrefix(raw.question);
+    return {
+      id: raw.id || stableQuestionId(question || `local-${index}`),
+      source: "local",
+      area: canonicalArea(raw.area || "Conhecimentos Gerais"),
+      difficulty: mapDifficulty(raw.difficulty),
+      question,
+      options: (raw.options || []).map(normalizeText),
+      answer: normalizeText(raw.answer),
+      explanation: normalizeText(raw.explanation || "")
     };
   }
 
@@ -344,7 +436,7 @@
   function dedupeQuestions(questions) {
     const seen = new Set();
     return questions.filter(question => {
-      const key = question.question.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\w]+/g, " ").trim();
+      const key = getQuestionKey(question);
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
@@ -360,26 +452,7 @@
 
   function buildBalancedQuestionQueue(questions) {
     const clean = limitMathShare(dedupeQuestions(questions.filter(validateQuestion)));
-    const byArea = clean.reduce((acc, question) => {
-      (acc[question.area] ||= []).push(question);
-      return acc;
-    }, {});
-    Object.values(byArea).forEach(list => {
-      const order = { "Fácil": 0, "Média": 1, "Avançada": 2 };
-      list.sort((a, b) => order[a.difficulty] - order[b.difficulty]);
-    });
-    const result = [];
-    let lastArea = null;
-    while (Object.values(byArea).some(list => list.length)) {
-      const areas = Object.keys(byArea)
-        .filter(area => byArea[area].length && area !== lastArea)
-        .sort((a, b) => byArea[b].length - byArea[a].length);
-      const area = areas[0] || Object.keys(byArea).find(key => byArea[key].length);
-      if (!area) break;
-      result.push(byArea[area].shift());
-      lastArea = area;
-    }
-    return result;
+    return shuffle(clean);
   }
 
   function readQuestionCache() {
@@ -404,7 +477,7 @@
   async function requestToken(url, storageKey) {
     const cached = JSON.parse(localStorage.getItem(storageKey) || "null");
     if (cached?.token && Date.now() - cached.savedAt < 5 * 60 * 60 * 1000) return cached.token;
-    const response = await fetch(url);
+    const response = await fetchWithTimeout(url);
     if (!response.ok) throw new Error(`Falha ao pedir token: ${response.status}`);
     const data = await response.json();
     if (!data.token) throw new Error("Token ausente na resposta.");
@@ -412,10 +485,20 @@
     return data.token;
   }
 
+  async function fetchWithTimeout(url, options = {}, timeoutMs = 6500) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
   async function fetchPrimaryQuestions({ amount = 50 } = {}) {
     const token = await requestToken("https://tryvia.ptr.red/api_token.php?command=request", PRIMARY_TOKEN_KEY);
     const url = `https://tryvia.ptr.red/api.php?amount=${amount}&type=multiple&token=${encodeURIComponent(token)}`;
-    const response = await fetch(url);
+    const response = await fetchWithTimeout(url);
     if (!response.ok) throw new Error(`Fonte principal HTTP ${response.status}`);
     const data = await response.json();
     if (Number(data.response_code) !== 0 || !Array.isArray(data.results)) throw new Error(`Fonte principal response_code ${data.response_code}`);
@@ -425,7 +508,7 @@
   async function fetchSecondaryQuestions({ amount = 20 } = {}) {
     const token = await requestToken("https://opentdb.com/api_token.php?command=request", SECONDARY_TOKEN_KEY);
     const url = `https://opentdb.com/api.php?amount=${Math.min(50, amount)}&type=multiple&token=${encodeURIComponent(token)}`;
-    const response = await fetch(url);
+    const response = await fetchWithTimeout(url);
     if (!response.ok) throw new Error(`Fonte secundária HTTP ${response.status}`);
     const data = await response.json();
     if (Number(data.response_code) !== 0 || !Array.isArray(data.results)) throw new Error(`Fonte secundária response_code ${data.response_code}`);
@@ -433,6 +516,7 @@
   }
 
   async function loadQuestions() {
+    const localQuestions = LOCAL_FALLBACK_QUESTIONS.map(normalizeLocalQuestion).filter(validateQuestion);
     const cached = readQuestionCache();
     setQuestionStatus("Carregando perguntas...", "");
     const slowMessage = setTimeout(() => setQuestionStatus("Buscando perguntas em português...", ""), 1800);
@@ -468,6 +552,10 @@
         setQuestionStatus("Não foi possível carregar novas perguntas. Usando perguntas já preparadas anteriormente.", "warning");
         return queue;
       }
+      if (localQuestions.length) {
+        setQuestionStatus("Não foi possível carregar novas perguntas. Usando seleção offline.", "warning");
+        return buildBalancedQuestionQueue(localQuestions);
+      }
       setQuestionStatus("Não foi possível carregar perguntas. Verifique a conexão e tente novamente.", "warning");
       return [];
     }
@@ -480,18 +568,22 @@
     const googleHelp = clampNumber(els.googleHelpCount.value, 3, 0);
     const timeHelp = clampNumber(els.timeHelpCount.value, 3, 0);
     const teams = teamDrafts.map((t, i) => ({
+      id: `team-${i + 1}`,
       name: t.name.trim(), color: t.color || COLORS[i % COLORS.length], members: t.members.map(m => m.trim()),
       memberIndex: 0, score: 0, correct: 0, wrong: 0,
       helps: { team: teamHelp, google: googleHelp, time: timeHelp }
     }));
     game = {
       targetScore, baseTime, teams,
-      currentTeamIndex: 0, round: 1, paused: false,
+      currentTeamIndex: 0, round: 1, paused: false, finished: false,
       helpUsedThisTurn: false, usedHelpType: null, answered: false,
       remaining: baseTime, totalForTimer: baseTime,
-      questions: shuffle(questionBank || []), allQuestions: questionBank || [], currentQuestion: null, currentOptions: [],
-      lastArea: null, lastDifficulty: null, lastTickSecond: null
+      questions: shuffle(questionBank || []), allQuestions: shuffle(questionBank || []), currentQuestion: null, currentOptions: [],
+      currentRoundQuestionIds: new Set(), currentRoundAreas: new Set(), usedQuestionIds: new Set(), recentQuestionIdsQueue: [],
+      recentMemorySize: Math.max(teams.length * 3, 12), teamDifficultyStats: {}, teamAreaStats: {},
+      lastQuestionArea: null, lastDifficulty: null, lastTickSecond: null
     };
+    teams.forEach(ensureTeamSelectionStats);
     localStorage.setItem("batalhaPerguntasSetup", JSON.stringify({ teams: teamDrafts, targetScore, baseTime, teamHelp, googleHelp, timeHelp }));
   }
 
@@ -524,35 +616,134 @@
     return team.members[team.memberIndex % team.members.length];
   }
 
+  function ensureTeamSelectionStats(team) {
+    if (!game || !team) return;
+    game.teamDifficultyStats[team.id] ||= DIFFICULTIES.reduce((acc, difficulty) => {
+      acc[difficulty] = 0;
+      return acc;
+    }, {});
+    game.teamAreaStats[team.id] ||= {};
+    team.recentAreas ||= [];
+  }
+
+  function getDifficultyBalanceWeight(difficulty, stats) {
+    const counts = DIFFICULTIES.map(key => stats[key] || 0);
+    const min = Math.min(...counts);
+    const count = stats[difficulty] || 0;
+    return count === min ? 2.2 : Math.max(0.7, 1.4 - (count - min) * 0.25);
+  }
+
+  function getAreaBalanceWeight(area, stats, candidates) {
+    const availableAreas = [...new Set(candidates.map(({ q }) => q.area))];
+    const min = Math.min(...availableAreas.map(key => stats[key] || 0));
+    const count = stats[area] || 0;
+    return count === min ? 2.1 : Math.max(0.55, 1.25 - (count - min) * 0.2);
+  }
+
+  function getQuestionWeight(candidate, team, candidates) {
+    const q = candidate.q;
+    const difficultyStats = game.teamDifficultyStats[team.id];
+    const areaStats = game.teamAreaStats[team.id];
+    let weight = getDifficultyBalanceWeight(q.difficulty, difficultyStats) * getAreaBalanceWeight(q.area, areaStats, candidates);
+    if (q.difficulty === team.lastDifficulty) weight *= 0.55;
+    if (q.area === team.lastArea) weight *= 0.35;
+    if (team.recentAreas.includes(q.area)) weight *= 0.55;
+    if (game.currentRoundAreas.has(q.area)) weight *= 0.65;
+    return Math.max(0.05, weight * (0.8 + Math.random() * 0.4));
+  }
+
+  function weightedPick(candidates, team) {
+    const weighted = candidates.map(candidate => ({ ...candidate, weight: getQuestionWeight(candidate, team, candidates) }));
+    const total = weighted.reduce((sum, item) => sum + item.weight, 0);
+    let cursor = Math.random() * total;
+    for (const item of weighted) {
+      cursor -= item.weight;
+      if (cursor <= 0) return item;
+    }
+    return weighted[weighted.length - 1];
+  }
+
+  function rememberRecentQuestion(key) {
+    game.recentQuestionIdsQueue.push(key);
+    while (game.recentQuestionIdsQueue.length > game.recentMemorySize) {
+      game.recentQuestionIdsQueue.shift();
+    }
+  }
+
+  function rememberTeamArea(team, area) {
+    team.recentAreas.push(area);
+    while (team.recentAreas.length > TEAM_RECENT_AREA_MEMORY) {
+      team.recentAreas.shift();
+    }
+  }
+
+  function registerSelectedQuestion(selection, team, roundNumber, candidateCount) {
+    const q = selection.q;
+    const key = selection.key;
+    game.currentRoundQuestionIds.add(key);
+    game.currentRoundAreas.add(q.area);
+    game.usedQuestionIds.add(key);
+    rememberRecentQuestion(key);
+    game.teamDifficultyStats[team.id][q.difficulty] = (game.teamDifficultyStats[team.id][q.difficulty] || 0) + 1;
+    game.teamAreaStats[team.id][q.area] = (game.teamAreaStats[team.id][q.area] || 0) + 1;
+    game.lastQuestionArea = q.area;
+    game.lastDifficulty = q.difficulty;
+    team.lastArea = q.area;
+    team.lastDifficulty = q.difficulty;
+    rememberTeamArea(team, q.area);
+    game.questions = game.questions.filter(question => getQuestionKey(question) !== key);
+    if (!game.questions.length) game.questions = shuffle(game.allQuestions || []);
+    if (DEBUG_QUESTION_SELECTION) {
+      console.table({
+        roundNumber,
+        teamId: team.id,
+        selectedQuestionId: q.id,
+        area: q.area,
+        difficulty: q.difficulty,
+        candidateCount
+      });
+    }
+  }
+
+  function selectNextQuestion({ teamId, roundNumber }) {
+    const team = game.teams.find(item => item.id === teamId) || getCurrentTeam();
+    ensureTeamSelectionStats(team);
+    const recentIds = new Set(game.recentQuestionIdsQueue);
+    let candidates = shuffle(game.allQuestions || [])
+      .map(q => ({ q, key: getQuestionKey(q) }))
+      .filter(({ key }) => key && !game.currentRoundQuestionIds.has(key));
+
+    if (!candidates.length) return null;
+
+    const differentLastArea = candidates.filter(({ q }) => q.area !== game.lastQuestionArea);
+    if (differentLastArea.length) candidates = differentLastArea;
+
+    const unused = candidates.filter(({ key }) => !game.usedQuestionIds.has(key));
+    if (unused.length) candidates = unused;
+    else {
+      const notRecent = candidates.filter(({ key }) => !recentIds.has(key));
+      if (notRecent.length) candidates = notRecent;
+    }
+
+    const notRecent = candidates.filter(({ key }) => !recentIds.has(key));
+    if (notRecent.length) candidates = notRecent;
+
+    const newRoundAreas = candidates.filter(({ q }) => !game.currentRoundAreas.has(q.area));
+    if (newRoundAreas.length) candidates = newRoundAreas;
+
+    const selected = weightedPick(candidates, team);
+    registerSelectedQuestion(selected, team, roundNumber, candidates.length);
+    return selected.q;
+  }
+
   function drawQuestion() {
-    if (!game.questions.length) {
-      game.questions = shuffle(game.allQuestions || []);
-    }
-    let candidates = game.questions
-      .map((q, index) => ({ q, index }))
-      .filter(({ q }) => q.area !== game.lastArea);
-
-    if (!candidates.length) {
-      game.questions = shuffle(game.allQuestions || []);
-      candidates = game.questions
-        .map((q, index) => ({ q, index }))
-        .filter(({ q }) => q.area !== game.lastArea);
-    }
-
-    if (!candidates.length) {
-      candidates = game.questions.map((q, index) => ({ q, index }));
-    }
-
-    const diffCandidates = candidates.filter(({ q }) => q.difficulty !== game.lastDifficulty);
-    if (diffCandidates.length) candidates = diffCandidates;
-
-    const picked = candidates[Math.floor(Math.random() * candidates.length)];
-    const q = game.questions.splice(picked.index, 1)[0];
+    const team = getCurrentTeam();
+    const q = selectNextQuestion({ teamId: team.id, roundNumber: game.round });
+    if (!q) return null;
     game.currentQuestion = q;
     game.currentOptions = shuffle(q.options || []);
-    game.lastArea = q.area;
-    game.lastDifficulty = q.difficulty;
     game.lastTickSecond = null;
+    return q;
   }
 
   function nextQuestion() {
@@ -567,7 +758,12 @@
     els.feedback.innerHTML = "";
     els.nextBtn.disabled = true;
     els.questionPanel.classList.remove("correct", "wrong", "timer-normal", "timer-warning", "timer-danger", "timer-critical");
-    drawQuestion();
+    if (!drawQuestion()) {
+      els.feedback.innerHTML = "<strong>Não há perguntas suficientes para completar esta rodada sem repetição.</strong> Carregue uma nova seleção e tente novamente.";
+      els.nextBtn.disabled = true;
+      stopMusic();
+      return;
+    }
     renderQuestion();
     renderScoreboard();
     updateHelpButtons();
@@ -642,14 +838,14 @@
   }
 
   function useHelp(type) {
-    if (!game || game.answered || game.helpUsedThisTurn || game.paused) return;
+    if (!game || game.finished || game.answered || game.helpUsedThisTurn || game.paused) return;
     const team = getCurrentTeam();
     if (team.helps[type] <= 0) return;
     team.helps[type]--;
     game.helpUsedThisTurn = true;
     game.usedHelpType = type;
     if (type === "team") {
-      els.feedback.innerHTML = `<strong>Consulta liberada.</strong> ${escapeHtml(team.name)} pode ajudar nesta pergunta. As outras ajudas ficam bloqueadas até a próxima rodada.`;
+      els.feedback.innerHTML = `<strong>Consulta liberada.</strong> ${escapeHtml(team.name)} pode ajudar nesta pergunta. As outras ajudas ficam bloqueadas até a próxima pergunta.`;
     }
     if (type === "google") {
       els.feedback.innerHTML = `<strong>Pesquisa liberada.</strong> Uma aba do Google foi aberta com a pergunta atual. As outras ajudas ficam bloqueadas nesta pergunta.`;
@@ -713,7 +909,7 @@
   }
 
   function answer(option, btn, timeout = false) {
-    if (!game || game.answered || game.paused) return;
+    if (!game || game.finished || game.answered || game.paused) return;
     game.answered = true;
     clearInterval(timerHandle);
     stopMusic();
@@ -736,6 +932,7 @@
       playSound("correct");
       celebrate(team.color);
       if (team.score >= game.targetScore) {
+        game.finished = true;
         setTimeout(() => finishGame(team), 900);
       }
     } else {
@@ -745,27 +942,35 @@
       els.feedback.innerHTML = `${intro} Resposta correta: <strong>${escapeHtml(q.answer)}</strong>.`;
       playSound("wrong");
     }
-    els.nextBtn.disabled = false;
+    els.nextBtn.disabled = game.finished;
     updateHelpButtons();
     renderScoreboard();
   }
 
+  function startNewRoundControls() {
+    game.currentRoundQuestionIds.clear();
+    game.currentRoundAreas.clear();
+  }
+
   function advanceTurn() {
-    if (!game || !game.answered) return;
+    if (!game || game.finished || !game.answered) return;
     const team = getCurrentTeam();
     team.memberIndex = (team.memberIndex + 1) % team.members.length;
     game.currentTeamIndex = (game.currentTeamIndex + 1) % game.teams.length;
-    if (game.currentTeamIndex === 0) game.round++;
+    if (game.currentTeamIndex === 0) {
+      game.round++;
+      startNewRoundControls();
+    }
     nextQuestion();
   }
 
   function skipQuestion() {
-    if (!game || game.answered || game.paused) return;
+    if (!game || game.finished || game.answered || game.paused) return;
     answer(null, null, false);
   }
 
   function togglePause() {
-    if (!game || game.answered) return;
+    if (!game || game.finished || game.answered) return;
     game.paused = !game.paused;
     els.pauseBtn.textContent = game.paused ? "Retomar" : "Pausar";
     els.feedback.innerHTML = game.paused ? "<strong>Jogo pausado.</strong> O timer foi interrompido." : "";

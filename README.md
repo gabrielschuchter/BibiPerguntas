@@ -33,18 +33,19 @@ O projeto funciona como site estático.
 - `index.html`: estrutura das telas, regras, setup, jogo e vitória.
 - `style.css`: layout responsivo, visual de game show, animações e estados do timer.
 - `app.js`: lógica de equipes, rodadas, sorteio, timer, sons, ajudas e pontuação.
-- `scripts/validate-questions.js`: valida que o app não usa banco local e mantém a camada online obrigatória.
+- `scripts/validate-questions.js`: valida fontes, fallback local, filtros e regras críticas de sorteio.
 - `data/question-sources.md`: notas sobre fontes abertas e filtros de qualidade.
 
 ## Fontes de perguntas
 
-O jogo usa apenas perguntas vindas de APIs abertas:
+O jogo prioriza perguntas vindas de fontes abertas online:
 
 - Uma fonte principal em português.
 - Uma fonte secundária, apenas quando as perguntas passam pelos filtros de idioma e qualidade.
 - Cache em `localStorage` com perguntas externas já validadas.
+- Fallback local embutido no `app.js`, usado apenas quando não há API nem cache disponível.
 
-Não existe banco local de perguntas embarcado. Se não houver internet e não existir cache externo validado, a partida não inicia e a interface mostra uma mensagem amigável.
+Assim, o jogo continua funcionando abrindo `index.html` mesmo sem internet.
 
 As perguntas são normalizadas internamente neste formato:
 
@@ -67,7 +68,7 @@ Para validar a arquitetura:
 node scripts/validate-questions.js
 ```
 
-O validador não exige dependências externas. Ele checa se não há banco local, se `index.html` não carrega `questions.js` e se `app.js` mantém endpoints, normalização, filtros e cache externo validado.
+O validador não exige dependências externas. Ele checa se `index.html` não carrega `questions.js`, se `app.js` mantém endpoints, normalização, timeout de rede, cache, fallback local e controles de sorteio justo.
 
 ## Fontes online e cache
 
@@ -79,17 +80,23 @@ Fluxo ao iniciar uma partida:
 4. Se necessário, tentar a fonte secundária com os mesmos filtros.
 5. Salvar perguntas externas válidas em `localStorage`.
 6. Se uma nova busca falhar, usar apenas cache externo validado.
-7. Se não houver API nem cache, não iniciar a partida.
+7. Se não houver API nem cache, usar o fallback local embutido.
 
 Existe um botão **Limpar cache** no topo da interface para forçar uma nova busca online na próxima partida.
 
 ## Sorteio das perguntas
 
-O app embaralha a base e remove da fila cada pergunta sorteada. Quando a fila acaba, ela é embaralhada novamente.
+A rodada é um ciclo completo em que cada equipe responde uma pergunta. A seleção fica concentrada em `selectNextQuestion`.
 
-Regra principal: a próxima pergunta nunca repete a mesma `area` da pergunta imediatamente anterior. A lógica filtra candidatas com `area !== lastArea`, inclusive depois de reembaralhar a base. A repetição só é permitida se não houver alternativa possível.
+Regras principais:
 
-O jogo também tenta evitar repetir a mesma dificuldade em sequência quando há candidatas disponíveis.
+- a mesma pergunta nunca se repete dentro da mesma rodada;
+- o jogo prioriza perguntas ainda não usadas na partida;
+- perguntas recentes são evitadas por uma memória proporcional ao número de equipes;
+- a próxima pergunta não repete a mesma `area` da pergunta anterior, salvo se for impossível;
+- temas já usados na rodada são evitados quando há alternativa;
+- dificuldade e tema são ponderados por equipe para reduzir vantagem pela ordem de cadastro;
+- o sorteio usa Fisher-Yates e escolha ponderada, sem percorrer a base em ordem fixa.
 
 ## Timer e sons
 
@@ -110,9 +117,9 @@ Cada equipe tem uma quantidade configurável de:
 - Pesquisar: abre uma busca no Google com a pergunta.
 - +1 minuto: adiciona 60 segundos ao timer atual.
 
-Só é permitida uma ajuda por pergunta. Depois de usar uma ajuda, as outras ficam bloqueadas até a próxima rodada.
+Só é permitida uma ajuda por pergunta. Depois de usar uma ajuda, as outras ficam bloqueadas até a próxima pergunta.
 
 ## Atalhos
 
 - `1`, `2`, `3`, `4`: respondem as alternativas A, B, C e D.
-- Barra de espaço: avança para a próxima rodada depois de responder.
+- Barra de espaço: avança para o próximo turno depois de responder.
